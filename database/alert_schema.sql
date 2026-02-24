@@ -1,0 +1,28 @@
+-- 预警设置表
+CREATE TABLE IF NOT EXISTS alert_settings (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  user_id INTEGER NOT NULL UNIQUE,
+  enabled INTEGER DEFAULT 1,
+  threshold_20 INTEGER DEFAULT 1,
+  threshold_10 INTEGER DEFAULT 1,
+  threshold_5 INTEGER DEFAULT 1,
+  push_browser INTEGER DEFAULT 1,
+  push_email INTEGER DEFAULT 0,
+  email TEXT,
+  last_alert_balance REAL,
+  last_alert_time DATETIME,
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+-- 预警日志表
+CREATE TABLE IF NOT EXISTS alert_logs (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  user_id INTEGER NOT NULL,
+  balance REAL NOT NULL,
+  threshold INTEGER NOT NULL,
+  alert_type TEXT NOT NULL,
+  sent_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (user_id) REFERENCES users(id)
+);

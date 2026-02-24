@@ -1,0 +1,1 @@
+import{u as o,o as t,a as r,c as a,b as n}from"./index-DayJmMNU.js";const c={class:"home"},i={__name:"Home",setup(u){const e=n(),s=o();return t(()=>{s.isLoggedIn?e.push("/dashboard"):e.push("/login")}),(_,p)=>(r(),a("div",c))}};export{i as default};

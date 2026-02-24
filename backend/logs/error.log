@@ -1,0 +1,5 @@
+2026-02-19T11:24:35.335Z [ERROR]: Unhandled error: ENOENT: no such file or directory, stat '/root/.openclaw/workspace/electricity-system/frontend/dist/index.html'
+2026-02-20T07:31:17.644Z [ERROR]: 更新事务失败: SQLITE_CONSTRAINT: NOT NULL constraint failed: dormitory_affairs.title
+2026-02-20T07:31:21.540Z [ERROR]: 更新事务失败: SQLITE_CONSTRAINT: NOT NULL constraint failed: dormitory_affairs.title
+2026-02-21T06:15:25.075Z [ERROR]: 更新事务失败: SQLITE_CONSTRAINT: NOT NULL constraint failed: dormitory_affairs.title
+2026-02-21T06:15:27.831Z [ERROR]: 更新事务失败: SQLITE_CONSTRAINT: NOT NULL constraint failed: dormitory_affairs.title

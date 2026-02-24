@@ -1,0 +1,368 @@
+Error: bind EADDRINUSE null:80
+    at listenOnPrimaryHandle (node:net:2021:18)
+    at rr (node:internal/cluster/child:163:12)
+    at Worker.<anonymous> (node:internal/cluster/child:113:7)
+    at process.onInternalMessage (node:internal/cluster/utils:49:5)
+    at process.emit (node:events:520:35)
+    at emit (node:internal/child_process:949:14)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+Error: bind EADDRINUSE null:80
+    at listenOnPrimaryHandle (node:net:2021:18)
+    at rr (node:internal/cluster/child:163:12)
+    at Worker.<anonymous> (node:internal/cluster/child:113:7)
+    at process.onInternalMessage (node:internal/cluster/utils:49:5)
+    at process.emit (node:events:520:35)
+    at emit (node:internal/child_process:949:14)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+Error: bind EADDRINUSE null:80
+    at listenOnPrimaryHandle (node:net:2021:18)
+    at rr (node:internal/cluster/child:163:12)
+    at Worker.<anonymous> (node:internal/cluster/child:113:7)
+    at process.onInternalMessage (node:internal/cluster/utils:49:5)
+    at process.emit (node:events:520:35)
+    at emit (node:internal/child_process:949:14)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+Error: bind EADDRINUSE null:80
+    at listenOnPrimaryHandle (node:net:2021:18)
+    at rr (node:internal/cluster/child:163:12)
+    at Worker.<anonymous> (node:internal/cluster/child:113:7)
+    at process.onInternalMessage (node:internal/cluster/utils:49:5)
+    at process.emit (node:events:520:35)
+    at emit (node:internal/child_process:949:14)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+Error: bind EADDRINUSE null:80
+    at listenOnPrimaryHandle (node:net:2021:18)
+    at rr (node:internal/cluster/child:163:12)
+    at Worker.<anonymous> (node:internal/cluster/child:113:7)
+    at process.onInternalMessage (node:internal/cluster/utils:49:5)
+    at process.emit (node:events:520:35)
+    at emit (node:internal/child_process:949:14)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+Error: bind EADDRINUSE null:80
+    at listenOnPrimaryHandle (node:net:2021:18)
+    at rr (node:internal/cluster/child:163:12)
+    at Worker.<anonymous> (node:internal/cluster/child:113:7)
+    at process.onInternalMessage (node:internal/cluster/utils:49:5)
+    at process.emit (node:events:520:35)
+    at emit (node:internal/child_process:949:14)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+Error: bind EADDRINUSE null:80
+    at listenOnPrimaryHandle (node:net:2021:18)
+    at rr (node:internal/cluster/child:163:12)
+    at Worker.<anonymous> (node:internal/cluster/child:113:7)
+    at process.onInternalMessage (node:internal/cluster/utils:49:5)
+    at process.emit (node:events:520:35)
+    at emit (node:internal/child_process:949:14)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+Error: bind EADDRINUSE null:80
+    at listenOnPrimaryHandle (node:net:2021:18)
+    at rr (node:internal/cluster/child:163:12)
+    at Worker.<anonymous> (node:internal/cluster/child:113:7)
+    at process.onInternalMessage (node:internal/cluster/utils:49:5)
+    at process.emit (node:events:520:35)
+    at emit (node:internal/child_process:949:14)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+Error: bind EADDRINUSE null:80
+    at listenOnPrimaryHandle (node:net:2021:18)
+    at rr (node:internal/cluster/child:163:12)
+    at Worker.<anonymous> (node:internal/cluster/child:113:7)
+    at process.onInternalMessage (node:internal/cluster/utils:49:5)
+    at process.emit (node:events:520:35)
+    at emit (node:internal/child_process:949:14)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+Error: bind EADDRINUSE null:80
+    at listenOnPrimaryHandle (node:net:2021:18)
+    at rr (node:internal/cluster/child:163:12)
+    at Worker.<anonymous> (node:internal/cluster/child:113:7)
+    at process.onInternalMessage (node:internal/cluster/utils:49:5)
+    at process.emit (node:events:520:35)
+    at emit (node:internal/child_process:949:14)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+Error: bind EADDRINUSE null:80
+    at listenOnPrimaryHandle (node:net:2021:18)
+    at rr (node:internal/cluster/child:163:12)
+    at Worker.<anonymous> (node:internal/cluster/child:113:7)
+    at process.onInternalMessage (node:internal/cluster/utils:49:5)
+    at process.emit (node:events:520:35)
+    at emit (node:internal/child_process:949:14)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+Error: bind EADDRINUSE null:80
+    at listenOnPrimaryHandle (node:net:2021:18)
+    at rr (node:internal/cluster/child:163:12)
+    at Worker.<anonymous> (node:internal/cluster/child:113:7)
+    at process.onInternalMessage (node:internal/cluster/utils:49:5)
+    at process.emit (node:events:520:35)
+    at emit (node:internal/child_process:949:14)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+Error: bind EADDRINUSE null:80
+    at listenOnPrimaryHandle (node:net:2021:18)
+    at rr (node:internal/cluster/child:163:12)
+    at Worker.<anonymous> (node:internal/cluster/child:113:7)
+    at process.onInternalMessage (node:internal/cluster/utils:49:5)
+    at process.emit (node:events:520:35)
+    at emit (node:internal/child_process:949:14)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+Error: bind EADDRINUSE null:80
+    at listenOnPrimaryHandle (node:net:2021:18)
+    at rr (node:internal/cluster/child:163:12)
+    at Worker.<anonymous> (node:internal/cluster/child:113:7)
+    at process.onInternalMessage (node:internal/cluster/utils:49:5)
+    at process.emit (node:events:520:35)
+    at emit (node:internal/child_process:949:14)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+Error: bind EADDRINUSE null:80
+    at listenOnPrimaryHandle (node:net:2021:18)
+    at rr (node:internal/cluster/child:163:12)
+    at Worker.<anonymous> (node:internal/cluster/child:113:7)
+    at process.onInternalMessage (node:internal/cluster/utils:49:5)
+    at process.emit (node:events:520:35)
+    at emit (node:internal/child_process:949:14)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+Error: bind EADDRINUSE null:80
+    at listenOnPrimaryHandle (node:net:2021:18)
+    at rr (node:internal/cluster/child:163:12)
+    at Worker.<anonymous> (node:internal/cluster/child:113:7)
+    at process.onInternalMessage (node:internal/cluster/utils:49:5)
+    at process.emit (node:events:520:35)
+    at emit (node:internal/child_process:949:14)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+2026-02-18 22:13:20: ValidationError: The 'X-Forwarded-For' header is set but the Express 'trust proxy' setting is false (default). This could indicate a misconfiguration which would prevent express-rate-limit from accurately identifying users. See https://express-rate-limit.github.io/ERR_ERL_UNEXPECTED_X_FORWARDED_FOR/ for more information.
+    at Object.xForwardedForHeader (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:185:13)
+    at wrappedValidations.<computed> [as xForwardedForHeader] (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:397:22)
+    at Object.keyGenerator (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:658:20)
+    at /root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:710:32
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async /root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:691:5 {
+  code: 'ERR_ERL_UNEXPECTED_X_FORWARDED_FOR',
+  help: 'https://express-rate-limit.github.io/ERR_ERL_UNEXPECTED_X_FORWARDED_FOR/'
+}
+2026-02-19 00:46:47: ValidationError: The 'X-Forwarded-For' header is set but the Express 'trust proxy' setting is false (default). This could indicate a misconfiguration which would prevent express-rate-limit from accurately identifying users. See https://express-rate-limit.github.io/ERR_ERL_UNEXPECTED_X_FORWARDED_FOR/ for more information.
+    at Object.xForwardedForHeader (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:185:13)
+    at wrappedValidations.<computed> [as xForwardedForHeader] (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:397:22)
+    at Object.keyGenerator (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:658:20)
+    at /root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:710:32
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async /root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:691:5 {
+  code: 'ERR_ERL_UNEXPECTED_X_FORWARDED_FOR',
+  help: 'https://express-rate-limit.github.io/ERR_ERL_UNEXPECTED_X_FORWARDED_FOR/'
+}
+2026-02-19 01:19:21: ValidationError: The 'X-Forwarded-For' header is set but the Express 'trust proxy' setting is false (default). This could indicate a misconfiguration which would prevent express-rate-limit from accurately identifying users. See https://express-rate-limit.github.io/ERR_ERL_UNEXPECTED_X_FORWARDED_FOR/ for more information.
+    at Object.xForwardedForHeader (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:185:13)
+    at wrappedValidations.<computed> [as xForwardedForHeader] (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:397:22)
+    at Object.keyGenerator (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:658:20)
+    at /root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:710:32
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async /root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:691:5 {
+  code: 'ERR_ERL_UNEXPECTED_X_FORWARDED_FOR',
+  help: 'https://express-rate-limit.github.io/ERR_ERL_UNEXPECTED_X_FORWARDED_FOR/'
+}
+2026-02-19 10:11:08: ValidationError: The 'X-Forwarded-For' header is set but the Express 'trust proxy' setting is false (default). This could indicate a misconfiguration which would prevent express-rate-limit from accurately identifying users. See https://express-rate-limit.github.io/ERR_ERL_UNEXPECTED_X_FORWARDED_FOR/ for more information.
+    at Object.xForwardedForHeader (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:185:13)
+    at wrappedValidations.<computed> [as xForwardedForHeader] (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:397:22)
+    at Object.keyGenerator (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:658:20)
+    at /root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:710:32
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async /root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:691:5 {
+  code: 'ERR_ERL_UNEXPECTED_X_FORWARDED_FOR',
+  help: 'https://express-rate-limit.github.io/ERR_ERL_UNEXPECTED_X_FORWARDED_FOR/'
+}
+2026-02-19 10:18:30: ValidationError: The 'X-Forwarded-For' header is set but the Express 'trust proxy' setting is false (default). This could indicate a misconfiguration which would prevent express-rate-limit from accurately identifying users. See https://express-rate-limit.github.io/ERR_ERL_UNEXPECTED_X_FORWARDED_FOR/ for more information.
+    at Object.xForwardedForHeader (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:185:13)
+    at wrappedValidations.<computed> [as xForwardedForHeader] (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:397:22)
+    at Object.keyGenerator (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:658:20)
+    at /root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:710:32
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async /root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:691:5 {
+  code: 'ERR_ERL_UNEXPECTED_X_FORWARDED_FOR',
+  help: 'https://express-rate-limit.github.io/ERR_ERL_UNEXPECTED_X_FORWARDED_FOR/'
+}
+2026-02-19 10:27:31: ValidationError: The 'X-Forwarded-For' header is set but the Express 'trust proxy' setting is false (default). This could indicate a misconfiguration which would prevent express-rate-limit from accurately identifying users. See https://express-rate-limit.github.io/ERR_ERL_UNEXPECTED_X_FORWARDED_FOR/ for more information.
+    at Object.xForwardedForHeader (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:185:13)
+    at wrappedValidations.<computed> [as xForwardedForHeader] (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:397:22)
+    at Object.keyGenerator (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:658:20)
+    at /root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:710:32
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async /root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:691:5 {
+  code: 'ERR_ERL_UNEXPECTED_X_FORWARDED_FOR',
+  help: 'https://express-rate-limit.github.io/ERR_ERL_UNEXPECTED_X_FORWARDED_FOR/'
+}
+2026-02-19 11:33:52: ValidationError: The 'X-Forwarded-For' header is set but the Express 'trust proxy' setting is false (default). This could indicate a misconfiguration which would prevent express-rate-limit from accurately identifying users. See https://express-rate-limit.github.io/ERR_ERL_UNEXPECTED_X_FORWARDED_FOR/ for more information.
+    at Object.xForwardedForHeader (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:185:13)
+    at wrappedValidations.<computed> [as xForwardedForHeader] (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:397:22)
+    at Object.keyGenerator (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:658:20)
+    at /root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:710:32
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async /root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:691:5 {
+  code: 'ERR_ERL_UNEXPECTED_X_FORWARDED_FOR',
+  help: 'https://express-rate-limit.github.io/ERR_ERL_UNEXPECTED_X_FORWARDED_FOR/'
+}
+2026-02-19 15:09:02: ValidationError: The 'X-Forwarded-For' header is set but the Express 'trust proxy' setting is false (default). This could indicate a misconfiguration which would prevent express-rate-limit from accurately identifying users. See https://express-rate-limit.github.io/ERR_ERL_UNEXPECTED_X_FORWARDED_FOR/ for more information.
+    at Object.xForwardedForHeader (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:185:13)
+    at wrappedValidations.<computed> [as xForwardedForHeader] (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:397:22)
+    at Object.keyGenerator (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:658:20)
+    at /root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:710:32
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async /root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:691:5 {
+  code: 'ERR_ERL_UNEXPECTED_X_FORWARDED_FOR',
+  help: 'https://express-rate-limit.github.io/ERR_ERL_UNEXPECTED_X_FORWARDED_FOR/'
+}
+2026-02-19 15:57:33: ValidationError: The 'X-Forwarded-For' header is set but the Express 'trust proxy' setting is false (default). This could indicate a misconfiguration which would prevent express-rate-limit from accurately identifying users. See https://express-rate-limit.github.io/ERR_ERL_UNEXPECTED_X_FORWARDED_FOR/ for more information.
+    at Object.xForwardedForHeader (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:185:13)
+    at wrappedValidations.<computed> [as xForwardedForHeader] (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:397:22)
+    at Object.keyGenerator (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:658:20)
+    at /root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:710:32
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async /root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:691:5 {
+  code: 'ERR_ERL_UNEXPECTED_X_FORWARDED_FOR',
+  help: 'https://express-rate-limit.github.io/ERR_ERL_UNEXPECTED_X_FORWARDED_FOR/'
+}
+2026-02-19 16:47:27: ValidationError: The 'X-Forwarded-For' header is set but the Express 'trust proxy' setting is false (default). This could indicate a misconfiguration which would prevent express-rate-limit from accurately identifying users. See https://express-rate-limit.github.io/ERR_ERL_UNEXPECTED_X_FORWARDED_FOR/ for more information.
+    at Object.xForwardedForHeader (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:185:13)
+    at wrappedValidations.<computed> [as xForwardedForHeader] (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:397:22)
+    at Object.keyGenerator (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:658:20)
+    at /root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:710:32
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async /root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:691:5 {
+  code: 'ERR_ERL_UNEXPECTED_X_FORWARDED_FOR',
+  help: 'https://express-rate-limit.github.io/ERR_ERL_UNEXPECTED_X_FORWARDED_FOR/'
+}
+2026-02-19 16:57:17: ValidationError: The 'X-Forwarded-For' header is set but the Express 'trust proxy' setting is false (default). This could indicate a misconfiguration which would prevent express-rate-limit from accurately identifying users. See https://express-rate-limit.github.io/ERR_ERL_UNEXPECTED_X_FORWARDED_FOR/ for more information.
+    at Object.xForwardedForHeader (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:185:13)
+    at wrappedValidations.<computed> [as xForwardedForHeader] (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:397:22)
+    at Object.keyGenerator (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:658:20)
+    at /root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:710:32
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async /root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:691:5 {
+  code: 'ERR_ERL_UNEXPECTED_X_FORWARDED_FOR',
+  help: 'https://express-rate-limit.github.io/ERR_ERL_UNEXPECTED_X_FORWARDED_FOR/'
+}
+2026-02-19 17:17:14: ValidationError: The 'X-Forwarded-For' header is set but the Express 'trust proxy' setting is false (default). This could indicate a misconfiguration which would prevent express-rate-limit from accurately identifying users. See https://express-rate-limit.github.io/ERR_ERL_UNEXPECTED_X_FORWARDED_FOR/ for more information.
+    at Object.xForwardedForHeader (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:185:13)
+    at wrappedValidations.<computed> [as xForwardedForHeader] (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:397:22)
+    at Object.keyGenerator (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:658:20)
+    at /root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:710:32
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async /root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:691:5 {
+  code: 'ERR_ERL_UNEXPECTED_X_FORWARDED_FOR',
+  help: 'https://express-rate-limit.github.io/ERR_ERL_UNEXPECTED_X_FORWARDED_FOR/'
+}
+2026-02-19 18:18:58: ValidationError: The 'X-Forwarded-For' header is set but the Express 'trust proxy' setting is false (default). This could indicate a misconfiguration which would prevent express-rate-limit from accurately identifying users. See https://express-rate-limit.github.io/ERR_ERL_UNEXPECTED_X_FORWARDED_FOR/ for more information.
+    at Object.xForwardedForHeader (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:185:13)
+    at wrappedValidations.<computed> [as xForwardedForHeader] (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:397:22)
+    at Object.keyGenerator (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:658:20)
+    at /root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:710:32
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async /root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:691:5 {
+  code: 'ERR_ERL_UNEXPECTED_X_FORWARDED_FOR',
+  help: 'https://express-rate-limit.github.io/ERR_ERL_UNEXPECTED_X_FORWARDED_FOR/'
+}
+2026-02-19 23:10:37: ValidationError: The 'X-Forwarded-For' header is set but the Express 'trust proxy' setting is false (default). This could indicate a misconfiguration which would prevent express-rate-limit from accurately identifying users. See https://express-rate-limit.github.io/ERR_ERL_UNEXPECTED_X_FORWARDED_FOR/ for more information.
+    at Object.xForwardedForHeader (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:185:13)
+    at wrappedValidations.<computed> [as xForwardedForHeader] (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:397:22)
+    at Object.keyGenerator (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:658:20)
+    at /root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:710:32
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async /root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:691:5 {
+  code: 'ERR_ERL_UNEXPECTED_X_FORWARDED_FOR',
+  help: 'https://express-rate-limit.github.io/ERR_ERL_UNEXPECTED_X_FORWARDED_FOR/'
+}
+2026-02-20 15:12:58: ValidationError: The 'X-Forwarded-For' header is set but the Express 'trust proxy' setting is false (default). This could indicate a misconfiguration which would prevent express-rate-limit from accurately identifying users. See https://express-rate-limit.github.io/ERR_ERL_UNEXPECTED_X_FORWARDED_FOR/ for more information.
+    at Object.xForwardedForHeader (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:185:13)
+    at wrappedValidations.<computed> [as xForwardedForHeader] (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:397:22)
+    at Object.keyGenerator (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:658:20)
+    at /root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:710:32
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async /root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:691:5 {
+  code: 'ERR_ERL_UNEXPECTED_X_FORWARDED_FOR',
+  help: 'https://express-rate-limit.github.io/ERR_ERL_UNEXPECTED_X_FORWARDED_FOR/'
+}
+2026-02-21 13:38:51: ValidationError: The 'X-Forwarded-For' header is set but the Express 'trust proxy' setting is false (default). This could indicate a misconfiguration which would prevent express-rate-limit from accurately identifying users. See https://express-rate-limit.github.io/ERR_ERL_UNEXPECTED_X_FORWARDED_FOR/ for more information.
+    at Object.xForwardedForHeader (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:185:13)
+    at wrappedValidations.<computed> [as xForwardedForHeader] (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:397:22)
+    at Object.keyGenerator (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:658:20)
+    at /root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:710:32
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async /root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:691:5 {
+  code: 'ERR_ERL_UNEXPECTED_X_FORWARDED_FOR',
+  help: 'https://express-rate-limit.github.io/ERR_ERL_UNEXPECTED_X_FORWARDED_FOR/'
+}
+2026-02-21 14:20:24: ValidationError: The 'X-Forwarded-For' header is set but the Express 'trust proxy' setting is false (default). This could indicate a misconfiguration which would prevent express-rate-limit from accurately identifying users. See https://express-rate-limit.github.io/ERR_ERL_UNEXPECTED_X_FORWARDED_FOR/ for more information.
+    at Object.xForwardedForHeader (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:185:13)
+    at wrappedValidations.<computed> [as xForwardedForHeader] (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:397:22)
+    at Object.keyGenerator (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:658:20)
+    at /root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:710:32
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async /root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:691:5 {
+  code: 'ERR_ERL_UNEXPECTED_X_FORWARDED_FOR',
+  help: 'https://express-rate-limit.github.io/ERR_ERL_UNEXPECTED_X_FORWARDED_FOR/'
+}
+2026-02-21 21:01:47: ValidationError: The 'X-Forwarded-For' header is set but the Express 'trust proxy' setting is false (default). This could indicate a misconfiguration which would prevent express-rate-limit from accurately identifying users. See https://express-rate-limit.github.io/ERR_ERL_UNEXPECTED_X_FORWARDED_FOR/ for more information.
+    at Object.xForwardedForHeader (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:185:13)
+    at wrappedValidations.<computed> [as xForwardedForHeader] (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:397:22)
+    at Object.keyGenerator (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:658:20)
+    at /root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:710:32
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async /root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:691:5 {
+  code: 'ERR_ERL_UNEXPECTED_X_FORWARDED_FOR',
+  help: 'https://express-rate-limit.github.io/ERR_ERL_UNEXPECTED_X_FORWARDED_FOR/'
+}
+2026-02-21 23:56:15: ValidationError: The 'X-Forwarded-For' header is set but the Express 'trust proxy' setting is false (default). This could indicate a misconfiguration which would prevent express-rate-limit from accurately identifying users. See https://express-rate-limit.github.io/ERR_ERL_UNEXPECTED_X_FORWARDED_FOR/ for more information.
+    at Object.xForwardedForHeader (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:185:13)
+    at wrappedValidations.<computed> [as xForwardedForHeader] (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:397:22)
+    at Object.keyGenerator (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:658:20)
+    at /root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:710:32
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async /root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:691:5 {
+  code: 'ERR_ERL_UNEXPECTED_X_FORWARDED_FOR',
+  help: 'https://express-rate-limit.github.io/ERR_ERL_UNEXPECTED_X_FORWARDED_FOR/'
+}
+2026-02-22 09:25:51: ValidationError: The 'X-Forwarded-For' header is set but the Express 'trust proxy' setting is false (default). This could indicate a misconfiguration which would prevent express-rate-limit from accurately identifying users. See https://express-rate-limit.github.io/ERR_ERL_UNEXPECTED_X_FORWARDED_FOR/ for more information.
+    at Object.xForwardedForHeader (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:185:13)
+    at wrappedValidations.<computed> [as xForwardedForHeader] (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:397:22)
+    at Object.keyGenerator (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:658:20)
+    at /root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:710:32
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async /root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:691:5 {
+  code: 'ERR_ERL_UNEXPECTED_X_FORWARDED_FOR',
+  help: 'https://express-rate-limit.github.io/ERR_ERL_UNEXPECTED_X_FORWARDED_FOR/'
+}
+2026-02-22 14:43:46: ValidationError: The 'X-Forwarded-For' header is set but the Express 'trust proxy' setting is false (default). This could indicate a misconfiguration which would prevent express-rate-limit from accurately identifying users. See https://express-rate-limit.github.io/ERR_ERL_UNEXPECTED_X_FORWARDED_FOR/ for more information.
+    at Object.xForwardedForHeader (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:185:13)
+    at wrappedValidations.<computed> [as xForwardedForHeader] (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:397:22)
+    at Object.keyGenerator (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:658:20)
+    at /root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:710:32
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async /root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:691:5 {
+  code: 'ERR_ERL_UNEXPECTED_X_FORWARDED_FOR',
+  help: 'https://express-rate-limit.github.io/ERR_ERL_UNEXPECTED_X_FORWARDED_FOR/'
+}
+2026-02-22 14:51:12: ValidationError: The 'X-Forwarded-For' header is set but the Express 'trust proxy' setting is false (default). This could indicate a misconfiguration which would prevent express-rate-limit from accurately identifying users. See https://express-rate-limit.github.io/ERR_ERL_UNEXPECTED_X_FORWARDED_FOR/ for more information.
+    at Object.xForwardedForHeader (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:185:13)
+    at wrappedValidations.<computed> [as xForwardedForHeader] (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:397:22)
+    at Object.keyGenerator (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:658:20)
+    at /root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:710:32
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async /root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:691:5 {
+  code: 'ERR_ERL_UNEXPECTED_X_FORWARDED_FOR',
+  help: 'https://express-rate-limit.github.io/ERR_ERL_UNEXPECTED_X_FORWARDED_FOR/'
+}
+2026-02-22 15:56:19: ValidationError: The 'X-Forwarded-For' header is set but the Express 'trust proxy' setting is false (default). This could indicate a misconfiguration which would prevent express-rate-limit from accurately identifying users. See https://express-rate-limit.github.io/ERR_ERL_UNEXPECTED_X_FORWARDED_FOR/ for more information.
+    at Object.xForwardedForHeader (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:185:13)
+    at wrappedValidations.<computed> [as xForwardedForHeader] (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:397:22)
+    at Object.keyGenerator (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:658:20)
+    at /root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:710:32
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async /root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:691:5 {
+  code: 'ERR_ERL_UNEXPECTED_X_FORWARDED_FOR',
+  help: 'https://express-rate-limit.github.io/ERR_ERL_UNEXPECTED_X_FORWARDED_FOR/'
+}
+2026-02-23 01:59:21: ValidationError: The 'X-Forwarded-For' header is set but the Express 'trust proxy' setting is false (default). This could indicate a misconfiguration which would prevent express-rate-limit from accurately identifying users. See https://express-rate-limit.github.io/ERR_ERL_UNEXPECTED_X_FORWARDED_FOR/ for more information.
+    at Object.xForwardedForHeader (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:185:13)
+    at wrappedValidations.<computed> [as xForwardedForHeader] (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:397:22)
+    at Object.keyGenerator (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:658:20)
+    at /root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:710:32
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async /root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:691:5 {
+  code: 'ERR_ERL_UNEXPECTED_X_FORWARDED_FOR',
+  help: 'https://express-rate-limit.github.io/ERR_ERL_UNEXPECTED_X_FORWARDED_FOR/'
+}

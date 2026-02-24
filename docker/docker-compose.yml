@@ -1,0 +1,60 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: electricity-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ElectricityRoot@2024
+      MYSQL_DATABASE: electricity_monitor
+      MYSQL_USER: electricity_user
+      MYSQL_PASSWORD: Electricity@2024!
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ../database/schema.sql:/docker-entrypoint-initdb.d/schema.sql
+    networks:
+      - electricity-network
+
+  backend:
+    build:
+      context: ../backend
+      dockerfile: Dockerfile
+    container_name: electricity-backend
+    environment:
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_USER: electricity_user
+      DB_PASSWORD: Electricity@2024!
+      DB_NAME: electricity_monitor
+      JWT_SECRET: your-jwt-secret-change-in-production
+      NODE_ENV: production
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mysql
+    networks:
+      - electricity-network
+    restart: always
+
+  nginx:
+    image: nginx:alpine
+    container_name: electricity-nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ../frontend/dist:/usr/share/nginx/html
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - backend
+    networks:
+      - electricity-network
+    restart: always
+
+volumes:
+  mysql_data:
+
+networks:
+  electricity-network:
+    driver: bridge
