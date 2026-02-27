@@ -5,7 +5,7 @@
         <ArrowLeft class="back-icon" />
         <span>返回</span>
       </router-link>
-      <h1>🗳️ 投票与分工</h1>
+      <h1>🗳️ 投票与抽签</h1>
       <div class="nav-actions">
         <button class="create-btn" @click="openCreateDialog">
           <Plus class="btn-icon" />
@@ -27,11 +27,11 @@
         </div>
         <div 
           class="type-tab" 
-          :class="{ active: currentType === 'task' }"
-          @click="currentType = 'task'"
+          :class="{ active: currentType === 'lottery' }"
+          @click="currentType = 'lottery'"
         >
           <List class="tab-icon" />
-          <span>分工</span>
+          <span>抽签</span>
         </div>
       </div>
 
@@ -51,73 +51,113 @@
             :key="vote.id"
             class="item-card glass"
             :class="{ ended: vote.status === 1 }"
-            @click="openVoteDetail(vote)"
           >
             <div class="item-header">
               <div class="item-badge" :class="vote.status === 1 ? 'ended' : 'active'">
                 {{ vote.status === 1 ? '已结束' : '进行中' }}
               </div>
+              <div class="item-actions">
+                <el-dropdown trigger="click" @command="(cmd) => handleVoteAction(cmd, vote)">
+                  <div class="kebab-menu" @click.stop>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </div>
+                  <template #dropdown>
+                    <el-dropdown-menu>
+                      <el-dropdown-item command="edit">
+                        <Edit class="menu-icon" /> 编辑
+                      </el-dropdown-item>
+                      <el-dropdown-item command="delete" divided>
+                        <Delete class="menu-icon" /> 删除
+                      </el-dropdown-item>
+                    </el-dropdown-menu>
+                  </template>
+                </el-dropdown>
+              </div>
+            </div>
+            <div @click="openVoteDetail(vote)">
               <div class="item-meta">
                 <User class="meta-icon" />
                 <span>{{ vote.creator_name || '未知' }}</span>
               </div>
-            </div>
-            <h3 class="item-title">{{ vote.title }}</h3>
-            <p v-if="vote.description" class="item-desc">{{ vote.description }}</p>
-            <div class="item-footer">
-              <div class="item-stats">
-                <span class="stat">
-                  <Check class="stat-icon" />
-                  {{ vote.vote_count || 0 }} 票
-                </span>
-                <span class="stat">
-                  <Document class="stat-icon" />
-                  {{ vote.option_count || 0 }} 选项
-                </span>
-              </div>
-              <div class="item-arrow">
-                <ArrowRight class="arrow-icon" />
+              <h3 class="item-title">{{ vote.title }}</h3>
+              <p v-if="vote.description" class="item-desc">{{ vote.description }}</p>
+              <div class="item-footer">
+                <div class="item-stats">
+                  <span class="stat">
+                    <Check class="stat-icon" />
+                    {{ vote.vote_count || 0 }} 票
+                  </span>
+                  <span class="stat">
+                    <Document class="stat-icon" />
+                    {{ vote.option_count || 0 }} 选项
+                  </span>
+                </div>
+                <div class="item-arrow">
+                  <ArrowRight class="arrow-icon" />
+                </div>
               </div>
             </div>
           </div>
         </template>
 
-        <!-- 分工列表 -->
+        <!-- 抽签列表 -->
         <template v-else>
-          <div v-if="tasks.length === 0" class="empty-state">
+          <div v-if="lotterys.length === 0" class="empty-state">
             <List class="empty-icon" />
-            <p>暂无分工</p>
-            <button class="create-first-btn" @click="openCreateDialog(); currentType = 'task'">
-              发起第一个分工
+            <p>暂无抽签</p>
+            <button class="create-first-btn" @click="openCreateDialog(); currentType = 'lottery'">
+              发起第一个抽签
             </button>
           </div>
           <div 
-            v-for="task in tasks" 
-            :key="task.id"
+            v-for="lottery in lotterys" 
+            :key="lottery.id"
             class="item-card glass"
-            :class="{ ended: task.status === 1 }"
-            @click="openTaskDetail(task)"
+            :class="{ ended: lottery.status === 1 }"
           >
             <div class="item-header">
-              <div class="item-badge" :class="task.status === 1 ? 'ended' : 'active'">
-                {{ task.status === 1 ? '已完成' : '进行中' }}
+              <div class="item-badge" :class="lottery.status === 1 ? 'ended' : 'active'">
+                {{ lottery.status === 1 ? '已完成' : '进行中' }}
               </div>
-              <div class="item-meta">
-                <User class="meta-icon" />
-                <span>{{ task.creator_name || '未知' }}</span>
+              <div class="item-actions">
+                <el-dropdown trigger="click" @command="(cmd) => handleTaskAction(cmd, lottery)">
+                  <div class="kebab-menu" @click.stop>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </div>
+                  <template #dropdown>
+                    <el-dropdown-menu>
+                      <el-dropdown-item command="edit">
+                        <Edit class="menu-icon" /> 编辑
+                      </el-dropdown-item>
+                      <el-dropdown-item command="delete" divided>
+                        <Delete class="menu-icon" /> 删除
+                      </el-dropdown-item>
+                    </el-dropdown-menu>
+                  </template>
+                </el-dropdown>
               </div>
             </div>
-            <h3 class="item-title">{{ task.title }}</h3>
-            <p v-if="task.description" class="item-desc">{{ task.description }}</p>
-            <div class="item-footer">
-              <div class="item-stats">
-                <span class="stat">
-                  <Document class="stat-icon" />
-                  {{ task.option_count || 0 }} 项
-                </span>
+            <div @click="openTaskDetail(lottery)">
+              <div class="item-meta">
+                <User class="meta-icon" />
+                <span>{{ lottery.creator_name || '未知' }}</span>
               </div>
-              <div class="item-arrow">
-                <ArrowRight class="arrow-icon" />
+              <h3 class="item-title">{{ lottery.title }}</h3>
+              <p v-if="lottery.description" class="item-desc">{{ lottery.description }}</p>
+              <div class="item-footer">
+                <div class="item-stats">
+                  <span class="stat">
+                    <Document class="stat-icon" />
+                    {{ lottery.option_count || 0 }} 项
+                  </span>
+                </div>
+                <div class="item-arrow">
+                  <ArrowRight class="arrow-icon" />
+                </div>
               </div>
             </div>
           </div>
@@ -129,7 +169,7 @@
     <div v-if="showCreateDialog" class="dialog-overlay" @click.self="showCreateDialog = false">
       <div class="create-dialog glass">
         <div class="dialog-header">
-          <h2>{{ createType === 'vote' ? '🗳️ 创建投票' : '📋 创建分工' }}</h2>
+          <h2>{{ createType === 'vote' ? '🗳️ 创建投票' : '📋 创建抽签' }}</h2>
           <button class="close-btn" @click="showCreateDialog = false">
             <Close class="close-icon" />
           </button>
@@ -138,7 +178,7 @@
         <div class="dialog-body">
           <!-- 标题 -->
           <div class="form-field">
-            <label class="field-label">{{ createType === 'vote' ? '投票标题' : '分工标题' }}</label>
+            <label class="field-label">{{ createType === 'vote' ? '投票标题' : '抽签标题' }}</label>
             <input 
               v-model="createForm.title" 
               class="glass-input"
@@ -208,7 +248,7 @@
           <!-- 选项 -->
           <div class="form-field">
             <label class="field-label">
-              {{ createType === 'vote' ? '投票选项' : '分工选项' }}
+              {{ createType === 'vote' ? '投票选项' : '抽签选项' }}
               <span class="label-tip">（每行一个）</span>
             </label>
             <textarea 
@@ -226,14 +266,82 @@
         </div>
       </div>
     </div>
+
+    <!-- 编辑投票弹窗 -->
+    <div v-if="showEditVoteDialog" class="dialog-overlay" @click.self="showEditVoteDialog = false">
+      <div class="create-dialog glass">
+        <div class="dialog-header">
+          <h2>✏️ 编辑投票</h2>
+          <button class="close-btn" @click="showEditVoteDialog = false">
+            <Close class="close-icon" />
+          </button>
+        </div>
+        
+        <div class="dialog-body">
+          <div class="form-field">
+            <label class="field-label">投票标题</label>
+            <input v-model="editingVote.title" class="glass-input" placeholder="输入标题" />
+          </div>
+
+          <div class="form-field">
+            <label class="field-label">描述</label>
+            <textarea v-model="editingVote.description" class="glass-input glass-textarea" rows="2"></textarea>
+          </div>
+
+          <div class="form-field">
+            <label class="field-label">选项（每行一个）</label>
+            <textarea v-model="editingVote.optionsText" class="glass-input glass-textarea" rows="4"></textarea>
+          </div>
+        </div>
+
+        <div class="dialog-footer">
+          <button class="glass-btn secondary" @click="showEditVoteDialog = false">取消</button>
+          <button class="glass-btn primary" @click="saveEditVote">保存</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 编辑抽签弹窗 -->
+    <div v-if="showEditTaskDialog" class="dialog-overlay" @click.self="showEditTaskDialog = false">
+      <div class="create-dialog glass">
+        <div class="dialog-header">
+          <h2>✏️ 编辑抽签</h2>
+          <button class="close-btn" @click="showEditTaskDialog = false">
+            <Close class="close-icon" />
+          </button>
+        </div>
+        
+        <div class="dialog-body">
+          <div class="form-field">
+            <label class="field-label">抽签标题</label>
+            <input v-model="editingTask.title" class="glass-input" placeholder="输入标题" />
+          </div>
+
+          <div class="form-field">
+            <label class="field-label">描述</label>
+            <textarea v-model="editingTask.description" class="glass-input glass-textarea" rows="2"></textarea>
+          </div>
+
+          <div class="form-field">
+            <label class="field-label">选项（每行一个）</label>
+            <textarea v-model="editingTask.optionsText" class="glass-input glass-textarea" rows="4"></textarea>
+          </div>
+        </div>
+
+        <div class="dialog-footer">
+          <button class="glass-btn secondary" @click="showEditTaskDialog = false">取消</button>
+          <button class="glass-btn primary" @click="saveEditTask">保存</button>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
-import { ElMessage } from 'element-plus'
-import { ArrowLeft, ArrowRight, Plus, DataLine, List, User, Check, Document, Close } from '@element-plus/icons-vue'
+import { ElMessage, ElMessageBox } from 'element-plus'
+import { ArrowLeft, ArrowRight, Plus, DataLine, List, User, Check, Document, Close, Edit, Delete } from '@element-plus/icons-vue'
 
 const router = useRouter()
 
@@ -242,7 +350,7 @@ const showCreateDialog = ref(false)
 const createType = ref('vote')
 
 const votes = ref([])
-const tasks = ref([])
+const lotterys = ref([])
 
 const createForm = ref({
   title: '',
@@ -255,6 +363,200 @@ const createForm = ref({
 
 // 成员列表
 const roomMembers = ref([])
+
+// 编辑弹窗相关
+const showEditVoteDialog = ref(false)
+const showEditTaskDialog = ref(false)
+const editingVote = ref(null)
+const editingTask = ref(null)
+
+// 投票操作处理
+const handleVoteAction = async (action, vote) => {
+  if (action === 'delete') {
+    try {
+      await ElMessageBox.confirm('确定要删除这个投票吗？', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      })
+      
+      const token = localStorage.getItem('token')
+      const res = await fetch(`/api/votes/${vote.id}`, {
+        method: 'DELETE',
+        headers: { 
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }
+      })
+      const data = await res.json()
+      
+      if (data.success) {
+        ElMessage.success('删除成功')
+        fetchData()
+      } else {
+        ElMessage.error(data.error || '删除失败')
+      }
+    } catch (e) {
+      if (e !== 'cancel') {
+        console.error('删除失败:', e)
+      }
+    }
+  } else if (action === 'edit') {
+    // 检查是否可以编辑
+    if (vote.status === 1) {
+      ElMessage.warning('已结束的投票不能编辑')
+      return
+    }
+    if (vote.vote_count > 0) {
+      ElMessage.warning('已有投票记录，不能编辑')
+      return
+    }
+    openEditVoteDialog(vote)
+  }
+}
+
+// 抽签操作处理
+const handleTaskAction = async (action, lottery) => {
+  if (action === 'delete') {
+    try {
+      await ElMessageBox.confirm('确定要删除这个抽签吗？', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      })
+      
+      const token = localStorage.getItem('token')
+      const res = await fetch(`/api/votes/lotterys/${lottery.id}`, {
+        method: 'DELETE',
+        headers: { 
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }
+      })
+      const data = await res.json()
+      
+      if (data.success) {
+        ElMessage.success('删除成功')
+        fetchData()
+      } else {
+        ElMessage.error(data.error || '删除失败')
+      }
+    } catch (e) {
+      if (e !== 'cancel') {
+        console.error('删除失败:', e)
+      }
+    }
+  } else if (action === 'edit') {
+    // 检查是否可以编辑
+    if (lottery.status === 1) {
+      ElMessage.warning('已完成的抽签不能编辑')
+      return
+    }
+    openEditTaskDialog(lottery)
+  }
+}
+
+// 打开编辑投票弹窗
+const openEditVoteDialog = (vote) => {
+  editingVote.value = { ...vote, optionsText: vote.options?.map(o => o.content).join('\n') || '' }
+  showEditVoteDialog.value = true
+}
+
+// 打开编辑抽签弹窗
+const openEditTaskDialog = (lottery) => {
+  editingTask.value = { ...lottery, optionsText: lottery.options?.map(o => o.content).join('\n') || '' }
+  showEditTaskDialog.value = true
+}
+
+// 保存编辑投票
+const saveEditVote = async () => {
+  if (!editingVote.value.title.trim()) {
+    ElMessage.warning('请输入标题')
+    return
+  }
+  
+  const options = editingVote.value.optionsText
+    .split('\n')
+    .map(o => o.trim())
+    .filter(o => o)
+  
+  if (options.length < 2) {
+    ElMessage.warning('至少2个选项')
+    return
+  }
+  
+  try {
+    const token = localStorage.getItem('token')
+    const res = await fetch(`/api/votes/${editingVote.value.id}`, {
+      method: 'PUT',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        title: editingVote.value.title,
+        description: editingVote.value.description,
+        options
+      })
+    })
+    
+    const data = await res.json()
+    if (data.success) {
+      ElMessage.success('修改成功')
+      showEditVoteDialog.value = false
+      fetchData()
+    } else {
+      ElMessage.error(data.error || '修改失败')
+    }
+  } catch (error) {
+    ElMessage.error('修改失败')
+  }
+}
+
+// 保存编辑抽签
+const saveEditTask = async () => {
+  if (!editingTask.value.title.trim()) {
+    ElMessage.warning('请输入标题')
+    return
+  }
+  
+  const options = editingTask.value.optionsText
+    .split('\n')
+    .map(o => o.trim())
+    .filter(o => o)
+  
+  if (options.length < 1) {
+    ElMessage.warning('至少1个选项')
+    return
+  }
+  
+  try {
+    const token = localStorage.getItem('token')
+    const res = await fetch(`/api/votes/lotterys/${editingTask.value.id}`, {
+      method: 'PUT',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        title: editingTask.value.title,
+        description: editingTask.value.description,
+        options
+      })
+    })
+    
+    const data = await res.json()
+    if (data.success) {
+      ElMessage.success('修改成功')
+      showEditTaskDialog.value = false
+      fetchData()
+    } else {
+      ElMessage.error(data.error || '修改失败')
+    }
+  } catch (error) {
+    ElMessage.error('修改失败')
+  }
+}
 
 // 获取成员列表
 const fetchMembers = async () => {
@@ -309,13 +611,13 @@ const fetchData = async () => {
       console.log('设置votes:', votes.value.length, '条')
     }
     
-    // 再获取分工
-    const tasksRes = await fetch('/api/tasks', {
+    // 再获取抽签
+    const lotterysRes = await fetch('/api/lottery', {
       headers: { 'Authorization': `Bearer ${token}` }
     })
-    const tasksData = await tasksRes.json()
-    if (tasksData.success) {
-      tasks.value = tasksData.data || []
+    const lotterysData = await lotterysRes.json()
+    if (lotterysData.success) {
+      lotterys.value = lotterysData.data || []
     }
   } catch (error) {
     console.error('获取失败:', error)
@@ -350,7 +652,7 @@ const handleCreate = async () => {
   const token = localStorage.getItem('token')
   console.log('Token存在:', !!token)
   
-  const endpoint = createType.value === 'vote' ? '/api/votes' : '/api/tasks'
+  const endpoint = createType.value === 'vote' ? '/api/votes' : '/api/lottery'
   console.log('Endpoint:', endpoint)
   
   const body = {
@@ -362,6 +664,17 @@ const handleCreate = async () => {
   if (createType.value === 'vote') {
     body.type = createForm.value.voteType
     body.require_majority = createForm.value.requireMajority
+  } else {
+    // 抽签需要参与者
+    body.participant_ids = createForm.value.members
+    if (!body.participant_ids || body.participant_ids.length === 0) {
+      ElMessage.warning('请选择参与抽签的成员')
+      return
+    }
+    if (body.participant_ids.length !== options.length) {
+      ElMessage.warning('参与人数必须与抽签项目数量相同')
+      return
+    }
   }
   
   console.log('请求体:', body)
@@ -391,7 +704,7 @@ const handleCreate = async () => {
       }
       // 强制刷新列表
       votes.value = []
-      tasks.value = []
+      lotterys.value = []
       await fetchData()
     } else {
       ElMessage.error(result.error || '创建失败')
@@ -406,8 +719,8 @@ const openVoteDetail = (vote) => {
   router.push(`/votes/${vote.id}`)
 }
 
-const openTaskDetail = (task) => {
-  router.push(`/votes/task/${task.id}`)
+const openTaskDetail = (lottery) => {
+  router.push(`/votes/lottery/${lottery.id}`)
 }
 
 // 监听弹窗类型
@@ -568,6 +881,40 @@ onMounted(() => {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 12px;
+}
+
+.item-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.kebab-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 8px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+
+.kebab-menu:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.kebab-menu span {
+  display: block;
+  width: 4px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+}
+
+.menu-icon {
+  width: 14px;
+  height: 14px;
+  margin-right: 6px;
 }
 
 .item-badge {

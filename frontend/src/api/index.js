@@ -30,7 +30,7 @@ api.interceptors.response.use(
 
 // 认证相关
 export const authApi = {
-  login: (account, password) => api.post('/auth/login', { account, password })
+  login: (account, password, role) => api.post('/auth/login', { account, password, role })
 }
 
 // 电费数据相关

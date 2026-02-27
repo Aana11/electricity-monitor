@@ -29,22 +29,7 @@
         </router-link>
       </div>
       
-      <div class="nav-user">
-        <el-dropdown @command="handleCommand" trigger="click">
-          <span class="user-info glass">
-            <UserFilled class="user-avatar" />
-            <span class="user-name">{{ userStore.user?.realName || '用户' }}</span>
-            <ArrowDown class="user-arrow" />
-          </span>
-          <template #dropdown>
-            <el-dropdown-menu>
-              <el-dropdown-item command="logout">
-                <SwitchButton class="dropdown-icon" /> 退出登录
-              </el-dropdown-item>
-            </el-dropdown-menu>
-          </template>
-        </el-dropdown>
-      </div>
+      <div class="nav-placeholder"></div>
     </nav>
     
     <!-- 主要内容 -->
@@ -274,8 +259,7 @@ import { LineChart, BarChart } from 'echarts/charts'
 import { GridComponent, TooltipComponent, LegendComponent } from 'echarts/components'
 import VChart from 'vue-echarts'
 import {
-  Lightning, DataLine, Trophy, UserFilled, ArrowDown,
-  Wallet, Refresh, Calendar, Cpu, SwitchButton, Bell, ArrowRight, ArrowLeft
+  Lightning, DataLine, Trophy, Wallet, Refresh, Calendar, Cpu, Bell, ArrowRight, ArrowLeft
 } from '@element-plus/icons-vue'
 import { useUserStore } from '../stores/user.js'
 import { electricityApi } from '../api/index.js'
@@ -535,14 +519,6 @@ const formatTime = (time) => {
   return `${date.getMonth() + 1}月${date.getDate()}日 ${String(date.getHours()).padStart(2, '0')}:${String(date.getMinutes()).padStart(2, '0')}`
 }
 
-const handleCommand = (cmd) => {
-  if (cmd === 'logout') {
-    userStore.logout()
-    ElMessage.success('已退出登录')
-    router.push('/login')
-  }
-}
-
 onMounted(() => {
   loadData()
   loadHistory()
@@ -719,49 +695,9 @@ onMounted(() => {
   height: 18px;
 }
 
-/* 右侧用户 */
-.nav-user {
-  cursor: pointer;
-}
-
-.user-info {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: white;
-  font-weight: 500;
-  padding: 8px 16px;
-  border-radius: 12px;
-  transition: all 0.3s ease;
-}
-
-.user-info:hover {
-  background: rgba(255,255,255,0.25);
-}
-
-.user-avatar {
-  width: 32px;
-  height: 32px;
-  color: white;
-}
-
-.user-name {
-  font-size: 14px;
-  max-width: 80px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.user-arrow {
-  width: 16px;
-  height: 16px;
-}
-
-.dropdown-icon {
-  width: 16px;
-  height: 16px;
-  margin-right: 8px;
+/* 右侧占位 */
+.nav-placeholder {
+  width: 120px;
 }
 
 /* ===== 主要内容 ===== */

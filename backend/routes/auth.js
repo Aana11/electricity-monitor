@@ -8,7 +8,7 @@ const logger = require('../utils/logger');
 // 用户注册/登录
 router.post('/login', async (req, res) => {
   try {
-    const { account, password } = req.body;
+    const { account, password, role } = req.body;
     
     if (!account || !password) {
       return res.status(400).json({ error: '请提供账号和密码' });
@@ -30,8 +30,36 @@ router.post('/login', async (req, res) => {
     );
     
     let userId;
+    let finalRole;
     
     if (existingUser) {
+      // 已有用户，检查身份变更
+      const requestedRole = role === 'leader' ? 'leader' : 'member';
+      
+      if (existingUser.role === 'leader' && requestedRole === 'member') {
+        // 原来是宿舍长，想改成成员 - 不允许
+        return res.status(400).json({ 
+          error: '您当前是宿舍长身份，要更改身份请登录后在设置中操作' 
+        });
+      }
+      
+      if (existingUser.role === 'member' && requestedRole === 'leader') {
+        // 原来是成员，想升级成宿舍长 - 检查是否已有宿舍长
+        const existingLeader = await db.get(
+          "SELECT * FROM users WHERE room_name = ? AND role = 'leader' AND is_active = 1 AND id != ?",
+          [deviceInfo?.RoomName, existingUser.id]
+        );
+        if (existingLeader) {
+          return res.status(400).json({ 
+            error: '该宿舍已有宿舍长，无法升级身份' 
+          });
+        }
+        finalRole = 'leader';
+      } else {
+        // 保持原有身份
+        finalRole = existingUser.role;
+      }
+      
       // 更新用户信息
       await db.run(
         `UPDATE users SET 
@@ -42,6 +70,7 @@ router.post('/login', async (req, res) => {
          room_id = ?,
          room_name = ?,
          device_no = ?,
+         role = ?,
          last_login_at = datetime('now'),
          is_active = 1
          WHERE id = ?`,
@@ -53,16 +82,33 @@ router.post('/login', async (req, res) => {
           deviceInfo?.RoomId,
           deviceInfo?.RoomName,
           deviceInfo?.DevicesList?.[0]?.DevcieNo,
+          finalRole,
           existingUser.id
         ]
       );
       userId = existingUser.id;
     } else {
+      // 新用户
+      finalRole = role === 'leader' ? 'leader' : 'member';
+      
+      // 如果是宿舍长，检查该宿舍是否已有宿舍长
+      if (finalRole === 'leader' && deviceInfo?.RoomName) {
+        const existingLeader = await db.get(
+          "SELECT * FROM users WHERE room_name = ? AND role = 'leader' AND is_active = 1",
+          [deviceInfo.RoomName]
+        );
+        if (existingLeader) {
+          return res.status(400).json({ 
+            error: '该宿舍已有宿舍长注册，请选择"宿舍成员"身份或联系现任宿舍长' 
+          });
+        }
+      }
+      
       // 创建新用户
       const result = await db.run(
         `INSERT INTO users 
-         (school_account, school_password, real_name, gender, mobile, room_id, room_name, device_no, last_login_at)
-         VALUES (?, ?, ?, ?, ?, ?, ?, ?, datetime('now'))`,
+         (school_account, school_password, real_name, gender, mobile, room_id, room_name, device_no, role, last_login_at)
+         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, datetime('now'))`,
         [
           account,
           password,
@@ -71,7 +117,8 @@ router.post('/login', async (req, res) => {
           userInfo.Mobile,
           deviceInfo?.RoomId,
           deviceInfo?.RoomName,
-          deviceInfo?.DevicesList?.[0]?.DevcieNo
+          deviceInfo?.DevicesList?.[0]?.DevcieNo,
+          finalRole
         ]
       );
       userId = result.lastID;
@@ -100,7 +147,8 @@ router.post('/login', async (req, res) => {
         gender: fullUser.gender,
         mobile: fullUser.mobile,
         roomName: fullUser.room_name,
-        deviceNo: fullUser.device_no
+        deviceNo: fullUser.device_no,
+        role: fullUser.role
       }
     });
     

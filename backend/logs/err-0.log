@@ -366,3 +366,102 @@ Error: bind EADDRINUSE null:80
   code: 'ERR_ERL_UNEXPECTED_X_FORWARDED_FOR',
   help: 'https://express-rate-limit.github.io/ERR_ERL_UNEXPECTED_X_FORWARDED_FOR/'
 }
+2026-02-26 00:18:45: ValidationError: The 'X-Forwarded-For' header is set but the Express 'trust proxy' setting is false (default). This could indicate a misconfiguration which would prevent express-rate-limit from accurately identifying users. See https://express-rate-limit.github.io/ERR_ERL_UNEXPECTED_X_FORWARDED_FOR/ for more information.
+    at Object.xForwardedForHeader (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:185:13)
+    at wrappedValidations.<computed> [as xForwardedForHeader] (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:397:22)
+    at Object.keyGenerator (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:658:20)
+    at /root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:710:32
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async /root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:691:5 {
+  code: 'ERR_ERL_UNEXPECTED_X_FORWARDED_FOR',
+  help: 'https://express-rate-limit.github.io/ERR_ERL_UNEXPECTED_X_FORWARDED_FOR/'
+}
+2026-02-26 00:35:23: ValidationError: The 'X-Forwarded-For' header is set but the Express 'trust proxy' setting is false (default). This could indicate a misconfiguration which would prevent express-rate-limit from accurately identifying users. See https://express-rate-limit.github.io/ERR_ERL_UNEXPECTED_X_FORWARDED_FOR/ for more information.
+    at Object.xForwardedForHeader (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:185:13)
+    at wrappedValidations.<computed> [as xForwardedForHeader] (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:397:22)
+    at Object.keyGenerator (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:658:20)
+    at /root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:710:32
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async /root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:691:5 {
+  code: 'ERR_ERL_UNEXPECTED_X_FORWARDED_FOR',
+  help: 'https://express-rate-limit.github.io/ERR_ERL_UNEXPECTED_X_FORWARDED_FOR/'
+}
+2026-02-26 14:26:55: ValidationError: The 'X-Forwarded-For' header is set but the Express 'trust proxy' setting is false (default). This could indicate a misconfiguration which would prevent express-rate-limit from accurately identifying users. See https://express-rate-limit.github.io/ERR_ERL_UNEXPECTED_X_FORWARDED_FOR/ for more information.
+    at Object.xForwardedForHeader (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:185:13)
+    at wrappedValidations.<computed> [as xForwardedForHeader] (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:397:22)
+    at Object.keyGenerator (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:658:20)
+    at /root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:710:32
+    at async /root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:691:5 {
+  code: 'ERR_ERL_UNEXPECTED_X_FORWARDED_FOR',
+  help: 'https://express-rate-limit.github.io/ERR_ERL_UNEXPECTED_X_FORWARDED_FOR/'
+}
+2026-02-26 16:50:58: 邮件发送失败: Error: Invalid login: 535 Login fail. Account is abnormal, service is not open, password is incorrect, login frequency limited, or system is busy. More information at https://help.mail.qq.com/detail/108/1023
+    at SMTPConnection._formatError (/root/.openclaw/workspace/node_modules/nodemailer/lib/smtp-connection/index.js:912:19)
+    at SMTPConnection._actionAUTHComplete (/root/.openclaw/workspace/node_modules/nodemailer/lib/smtp-connection/index.js:1722:34)
+    at SMTPConnection.<anonymous> (/root/.openclaw/workspace/node_modules/nodemailer/lib/smtp-connection/index.js:651:26)
+    at SMTPConnection._processResponse (/root/.openclaw/workspace/node_modules/nodemailer/lib/smtp-connection/index.js:1098:20)
+    at SMTPConnection._onData (/root/.openclaw/workspace/node_modules/nodemailer/lib/smtp-connection/index.js:872:14)
+    at SMTPConnection._onSocketData (/root/.openclaw/workspace/node_modules/nodemailer/lib/smtp-connection/index.js:196:44)
+    at TLSSocket.emit (node:events:508:28)
+    at addChunk (node:internal/streams/readable:559:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:510:3)
+    at Readable.push (node:internal/streams/readable:390:5) {
+  code: 'EAUTH',
+  response: '535 Login fail. Account is abnormal, service is not open, password is incorrect, login frequency limited, or system is busy. More information at https://help.mail.qq.com/detail/108/1023',
+  responseCode: 535,
+  command: 'AUTH PLAIN'
+}
+2026-02-26 16:51:29: 邮件发送失败: Error: Invalid login: 535 Login fail. Account is abnormal, service is not open, password is incorrect, login frequency limited, or system is busy. More information at https://help.mail.qq.com/detail/108/1023
+    at SMTPConnection._formatError (/root/.openclaw/workspace/node_modules/nodemailer/lib/smtp-connection/index.js:912:19)
+    at SMTPConnection._actionAUTHComplete (/root/.openclaw/workspace/node_modules/nodemailer/lib/smtp-connection/index.js:1722:34)
+    at SMTPConnection.<anonymous> (/root/.openclaw/workspace/node_modules/nodemailer/lib/smtp-connection/index.js:651:26)
+    at SMTPConnection._processResponse (/root/.openclaw/workspace/node_modules/nodemailer/lib/smtp-connection/index.js:1098:20)
+    at SMTPConnection._onData (/root/.openclaw/workspace/node_modules/nodemailer/lib/smtp-connection/index.js:872:14)
+    at SMTPConnection._onSocketData (/root/.openclaw/workspace/node_modules/nodemailer/lib/smtp-connection/index.js:196:44)
+    at TLSSocket.emit (node:events:508:28)
+    at addChunk (node:internal/streams/readable:559:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:510:3)
+    at Readable.push (node:internal/streams/readable:390:5) {
+  code: 'EAUTH',
+  response: '535 Login fail. Account is abnormal, service is not open, password is incorrect, login frequency limited, or system is busy. More information at https://help.mail.qq.com/detail/108/1023',
+  responseCode: 535,
+  command: 'AUTH PLAIN'
+}
+2026-02-26 18:15:33: ValidationError: The 'X-Forwarded-For' header is set but the Express 'trust proxy' setting is false (default). This could indicate a misconfiguration which would prevent express-rate-limit from accurately identifying users. See https://express-rate-limit.github.io/ERR_ERL_UNEXPECTED_X_FORWARDED_FOR/ for more information.
+    at Object.xForwardedForHeader (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:185:13)
+    at wrappedValidations.<computed> [as xForwardedForHeader] (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:397:22)
+    at Object.keyGenerator (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:658:20)
+    at /root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:710:32
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async /root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:691:5 {
+  code: 'ERR_ERL_UNEXPECTED_X_FORWARDED_FOR',
+  help: 'https://express-rate-limit.github.io/ERR_ERL_UNEXPECTED_X_FORWARDED_FOR/'
+}
+2026-02-26 21:59:55: ValidationError: The 'X-Forwarded-For' header is set but the Express 'trust proxy' setting is false (default). This could indicate a misconfiguration which would prevent express-rate-limit from accurately identifying users. See https://express-rate-limit.github.io/ERR_ERL_UNEXPECTED_X_FORWARDED_FOR/ for more information.
+    at Object.xForwardedForHeader (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:185:13)
+    at wrappedValidations.<computed> [as xForwardedForHeader] (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:397:22)
+    at Object.keyGenerator (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:658:20)
+    at /root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:710:32
+    at async /root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:691:5 {
+  code: 'ERR_ERL_UNEXPECTED_X_FORWARDED_FOR',
+  help: 'https://express-rate-limit.github.io/ERR_ERL_UNEXPECTED_X_FORWARDED_FOR/'
+}
+2026-02-26 22:17:39: ValidationError: The 'X-Forwarded-For' header is set but the Express 'trust proxy' setting is false (default). This could indicate a misconfiguration which would prevent express-rate-limit from accurately identifying users. See https://express-rate-limit.github.io/ERR_ERL_UNEXPECTED_X_FORWARDED_FOR/ for more information.
+    at Object.xForwardedForHeader (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:185:13)
+    at wrappedValidations.<computed> [as xForwardedForHeader] (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:397:22)
+    at Object.keyGenerator (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:658:20)
+    at /root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:710:32
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async /root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:691:5 {
+  code: 'ERR_ERL_UNEXPECTED_X_FORWARDED_FOR',
+  help: 'https://express-rate-limit.github.io/ERR_ERL_UNEXPECTED_X_FORWARDED_FOR/'
+}
+2026-02-26 23:14:42: ValidationError: The 'X-Forwarded-For' header is set but the Express 'trust proxy' setting is false (default). This could indicate a misconfiguration which would prevent express-rate-limit from accurately identifying users. See https://express-rate-limit.github.io/ERR_ERL_UNEXPECTED_X_FORWARDED_FOR/ for more information.
+    at Object.xForwardedForHeader (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:185:13)
+    at wrappedValidations.<computed> [as xForwardedForHeader] (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:397:22)
+    at Object.keyGenerator (/root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:658:20)
+    at /root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:710:32
+    at async /root/.openclaw/workspace/electricity-system/backend/node_modules/express-rate-limit/dist/index.cjs:691:5 {
+  code: 'ERR_ERL_UNEXPECTED_X_FORWARDED_FOR',
+  help: 'https://express-rate-limit.github.io/ERR_ERL_UNEXPECTED_X_FORWARDED_FOR/'
+}

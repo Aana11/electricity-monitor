@@ -3,6 +3,7 @@ const path = require('path');
 const cors = require('cors');
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
+const compression = require('compression');
 const cron = require('node-cron');
 const db = require('./config/database');
 const logger = require('./utils/logger');
@@ -13,10 +14,35 @@ const recurringAffairService = require('./services/recurringAffairService');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// 安全中间件
+// 信任代理（nginx反向代理）
+app.set('trust proxy', 1);
+
+// 启用 gzip 压缩
+app.use(compression());
+
+// 安全中间件 - 添加安全响应头
 app.use(helmet({
-  contentSecurityPolicy: false
+  contentSecurityPolicy: {
+    directives: {
+      defaultSrc: ["'self'"],
+      styleSrc: ["'self'", "'unsafe-inline'"],
+      scriptSrc: ["'self'"],
+      imgSrc: ["'self'", "data:", "https:"],
+    }
+  },
+  xFrameOptions: { action: 'deny' },
+  xContentTypeOptions: true,
+  xXssProtection: true,
+  referrerPolicy: { policy: 'strict-origin-when-cross-origin' }
 }));
+
+// 静态文件缓存
+app.use(express.static(path.join(__dirname, '../frontend/dist'), {
+  maxAge: '1d',
+  etag: true,
+  lastModified: true
+}));
+
 app.use(cors());
 
 // 限流
@@ -24,7 +50,7 @@ const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 100
 });
-app.use(limiter);
+app.use('/api/', limiter);
 
 // 解析JSON
 app.use(express.json());
@@ -39,9 +65,11 @@ app.use('/api/alerts', require('./routes/alerts'));
 app.use('/api/affairs', require('./routes/affairs'));
 app.use('/api/affairs', require('./routes/recurringAffairs'));
 app.use('/api/votes', require('./routes/votes'));
+app.use('/api/lottery', require('./routes/lottery'));
+app.use('/api/email', require('./routes/email'));
+app.use('/api/user', require('./routes/user'));
 
-// 静态文件服务
-app.use(express.static(path.join(__dirname, '../frontend/dist')));
+// 静态文件服务已在前面配置
 
 // 所有其他路由返回index.html（SPA支持）
 app.get('*', (req, res) => {

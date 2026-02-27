@@ -16,22 +16,30 @@
         <span class="brand-text">宿舍三两事</span>
       </div>
       
-      <div class="header-user">
-        <el-dropdown trigger="click">
-          <div class="user-avatar glass">
-            <UserFilled class="avatar-icon" />
-          </div>
-          <template #dropdown>
-            <el-dropdown-menu>
-              <el-dropdown-item>
-                <Setting class="menu-icon" /> 设置
-              </el-dropdown-item>
-              <el-dropdown-item divided>
-                <SwitchButton class="menu-icon" /> 退出
-              </el-dropdown-item>
-            </el-dropdown-menu>
-          </template>
-        </el-dropdown>
+      <div class="header-right">
+        <!-- 身份标识卡片 -->
+        <div class="role-badge" :class="userRole">
+          <span class="role-icon">{{ userRole === 'leader' ? '👑' : '👤' }}</span>
+          <span class="role-text">{{ userRole === 'leader' ? '宿舍长' : '宿舍成员' }}</span>
+        </div>
+        
+        <div class="header-user">
+          <el-dropdown trigger="click" @command="handleUserCommand">
+            <div class="user-avatar glass">
+              <UserFilled class="avatar-icon" />
+            </div>
+            <template #dropdown>
+              <el-dropdown-menu>
+                <el-dropdown-item command="settings">
+                  <Setting class="menu-icon" /> 设置
+                </el-dropdown-item>
+                <el-dropdown-item command="logout" divided>
+                  <SwitchButton class="menu-icon" /> 退出
+                </el-dropdown-item>
+              </el-dropdown-menu>
+            </template>
+          </el-dropdown>
+        </div>
       </div>
     </header>
 
@@ -155,16 +163,121 @@
       </div>
     </footer>
   </div>
+
+  <!-- 更改身份弹窗 -->
+  <div v-if="showRoleDialog" class="dialog-overlay" @click.self="showRoleDialog = false">
+    <div class="role-dialog glass">
+      <div class="dialog-header">
+        <h3>🔄 更改身份</h3>
+        <button class="close-btn" @click="showRoleDialog = false">✕</button>
+      </div>
+      <div class="dialog-body">
+        <p class="current-role">当前身份：<span :class="userRole">{{ userRole === 'leader' ? '👑 宿舍长' : '👤 宿舍成员' }}</span></p>
+        
+        <div class="role-options">
+          <div 
+            class="role-option-card" 
+            :class="{ active: newRole === 'leader', disabled: userRole === 'leader' }"
+            @click="userRole !== 'leader' && (newRole = 'leader')"
+          >
+            <span class="role-emoji">👑</span>
+            <span class="role-name">宿舍长</span>
+            <span v-if="userRole === 'leader'" class="role-status">(当前)</span>
+          </div>
+          <div 
+            class="role-option-card" 
+            :class="{ active: newRole === 'member', disabled: userRole === 'member' }"
+            @click="userRole !== 'member' && (newRole = 'member')"
+          >
+            <span class="role-emoji">👤</span>
+            <span class="role-name">宿舍成员</span>
+            <span v-if="userRole === 'member'" class="role-status">(当前)</span>
+          </div>
+        </div>
+
+        <div v-if="newRole === 'leader' && userRole === 'member'" class="role-warning">
+          ⚠️ 升级为宿舍长需要该宿舍暂无宿舍长
+        </div>
+        <div v-if="newRole === 'member' && userRole === 'leader'" class="role-warning">
+          ⚠️ 降级为宿舍成员后将失去管理权限
+        </div>
+      </div>
+      <div class="dialog-footer">
+        <button class="btn-secondary" @click="showRoleDialog = false">取消</button>
+        <button 
+          class="btn-primary" 
+          :disabled="newRole === userRole || changingRole"
+          @click="changeRole"
+        >
+          {{ changingRole ? '更改中...' : '确认更改' }}
+        </button>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { useRouter } from 'vue-router'
+import { useUserStore } from '../stores/user'
+import { ElMessage } from 'element-plus'
 import { Lightning, UserFilled, Setting, SwitchButton, ArrowRight, Plus, List, DataLine } from '@element-plus/icons-vue'
 
-const userName = ref('同学')
+const router = useRouter()
+const userStore = useUserStore()
+
+const userName = computed(() => {
+  return userStore.user?.realName || userStore.user?.nickname || '同学'
+})
+
+const userRole = computed(() => {
+  return userStore.user?.role || 'member'
+})
+
 const currentTime = ref('')
 const currentDate = ref('')
 let timeTimer = null
+
+// 更改身份相关
+const showRoleDialog = ref(false)
+const newRole = ref('member')
+const changingRole = ref(false)
+
+const openRoleDialog = () => {
+  newRole.value = userRole.value
+  showRoleDialog.value = true
+}
+
+const changeRole = async () => {
+  if (newRole.value === userRole.value) return
+  
+  changingRole.value = true
+  try {
+    const token = localStorage.getItem('token')
+    const res = await fetch('/api/user/change-role', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ newRole: newRole.value })
+    })
+    
+    const data = await res.json()
+    if (data.success) {
+      ElMessage.success(data.message)
+      // 更新用户信息
+      userStore.setUser({ ...userStore.user, role: newRole.value })
+      showRoleDialog.value = false
+    } else {
+      ElMessage.error(data.error || '更改失败')
+    }
+  } catch (error) {
+    ElMessage.error('更改失败')
+  } finally {
+    changingRole.value = false
+  }
+}
 
 const greeting = computed(() => {
   const hour = new Date().getHours()
@@ -174,6 +287,16 @@ const greeting = computed(() => {
   if (hour < 18) return '下午好'
   return '晚上好'
 })
+
+const handleUserCommand = (cmd) => {
+  if (cmd === 'logout') {
+    userStore.logout()
+    ElMessage.success('已退出登录')
+    router.push('/login')
+  } else if (cmd === 'settings') {
+    openRoleDialog()
+  }
+}
 
 const updateTime = () => {
   const now = new Date()
@@ -204,7 +327,8 @@ onUnmounted(() => {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   position: relative;
   overflow-x: hidden;
-  padding-bottom: 40px;
+  display: flex;
+  flex-direction: column;
 }
 
 /* ===== 背景装饰 ===== */
@@ -335,6 +459,61 @@ onUnmounted(() => {
   font-weight: 700;
   color: white;
   text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* 身份标识卡片 */
+.role-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.role-badge.leader {
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.25) 0%, rgba(255, 165, 0, 0.25) 100%);
+  color: #ffd700;
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+}
+
+.role-badge.member {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.25) 0%, rgba(118, 75, 162, 0.25) 100%);
+  color: #a5b4fc;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
+}
+
+.role-icon {
+  font-size: 14px;
+}
+
+.role-text {
+  white-space: nowrap;
+}
+
+/* 响应式调整 */
+@media (max-width: 480px) {
+  .role-badge {
+    padding: 6px 10px;
+  }
+  
+  .role-text {
+    display: none;
+  }
+  
+  .role-icon {
+    font-size: 16px;
+  }
 }
 
 .user-avatar {
@@ -608,7 +787,7 @@ onUnmounted(() => {
 
 /* ===== 页脚 ===== */
 .glass-footer {
-  margin-top: 40px;
+  margin-top: auto;
   padding: 24px 32px;
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(20px);
@@ -664,6 +843,190 @@ onUnmounted(() => {
 .contact-email:hover {
   color: #f093fb;
   text-decoration: underline;
+}
+
+/* ===== 更改身份弹窗 ===== */
+.dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.role-dialog {
+  width: 100%;
+  max-width: 400px;
+  background: rgba(30, 32, 60, 0.95);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+}
+
+.dialog-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dialog-header h3 {
+  color: white;
+  font-size: 18px;
+  margin: 0;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 20px;
+  cursor: pointer;
+  padding: 4px;
+  transition: color 0.3s;
+}
+
+.close-btn:hover {
+  color: white;
+}
+
+.dialog-body {
+  padding: 24px;
+}
+
+.current-role {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 15px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.current-role span {
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 12px;
+}
+
+.current-role span.leader {
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.3), rgba(255, 165, 0, 0.3));
+  color: #ffd700;
+}
+
+.current-role span.member {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.3), rgba(118, 75, 162, 0.3));
+  color: #a5b4fc;
+}
+
+.role-options {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.role-option-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 20px 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.role-option-card:hover:not(.disabled) {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(102, 126, 234, 0.5);
+  transform: translateY(-2px);
+}
+
+.role-option-card.active {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.2));
+  border-color: #667eea;
+}
+
+.role-option-card.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.role-emoji {
+  font-size: 32px;
+}
+
+.role-name {
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.role-status {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 12px;
+}
+
+.role-warning {
+  background: rgba(255, 193, 7, 0.15);
+  border: 1px solid rgba(255, 193, 7, 0.3);
+  color: #ffc107;
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-size: 13px;
+  text-align: center;
+}
+
+.dialog-footer {
+  display: flex;
+  gap: 12px;
+  padding: 20px 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.btn-secondary,
+.btn-primary {
+  flex: 1;
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.btn-primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+}
+
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 /* ===== 响应式 ===== */

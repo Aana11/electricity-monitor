@@ -9,20 +9,21 @@ const logger = require('../utils/logger');
 // 获取投票列表
 router.get('/', authMiddleware, async (req, res) => {
   try {
-    logger.info('获取投票列表, req.user: ' + JSON.stringify(req.user));
+    const userStr = JSON.stringify(req.user);
+    logger.info('获取投票列表, req.user: ' + userStr);
     
     let roomName = req.user?.room || req.user?.roomName;
-    logger.info('room from token:', roomName);
+    logger.info('room from token: ' + roomName);
     
     // 如果token中没有room，从数据库获取
     if (!roomName) {
       const userId = req.user?.userId || req.user?.id;
-      logger.info('token中没有room，查询数据库, userId:', userId);
+      logger.info('token中没有room，查询数据库, userId: ' + userId);
       if (userId) {
         const user = await db.get('SELECT room_name FROM users WHERE id = ?', [userId]);
         if (user) {
           roomName = user.room_name;
-          logger.info('从数据库获取room:', roomName);
+          logger.info('从数据库获取room: ' + roomName);
         }
       }
     }
@@ -192,6 +193,81 @@ router.put('/:id/close', authMiddleware, async (req, res) => {
   } catch (error) {
     logger.error('结束投票失败:', error);
     res.status(500).json({ error: '操作失败' });
+  }
+});
+
+// 删除投票
+router.delete('/:id', authMiddleware, async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const vote = await db.get('SELECT * FROM votes WHERE id = ?', [id]);
+    if (!vote) {
+      return res.status(404).json({ error: '投票不存在' });
+    }
+
+    // 只有创建者或宿舍长可以删除
+    if (vote.creator_id !== req.user.userId && req.user.role !== 'leader') {
+      return res.status(403).json({ error: '只有创建者或宿舍长可以删除投票' });
+    }
+
+    // 删除相关记录
+    await db.run('DELETE FROM vote_records WHERE vote_id = ?', [id]);
+    await db.run('DELETE FROM vote_options WHERE vote_id = ?', [id]);
+    await db.run('DELETE FROM votes WHERE id = ?', [id]);
+
+    res.json({ success: true, message: '删除成功' });
+  } catch (error) {
+    logger.error('删除投票失败:', error);
+    res.status(500).json({ error: '删除失败' });
+  }
+});
+
+// 编辑投票
+router.put('/:id', authMiddleware, async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { title, description, options } = req.body;
+
+    const vote = await db.get('SELECT * FROM votes WHERE id = ?', [id]);
+    if (!vote) {
+      return res.status(404).json({ error: '投票不存在' });
+    }
+
+    if (vote.creator_id !== req.user.userId) {
+      return res.status(403).json({ error: '只有发起人可以编辑投票' });
+    }
+
+    if (vote.status === 1) {
+      return res.status(400).json({ error: '已结束的投票不能编辑' });
+    }
+
+    // 检查是否已有投票记录
+    const voteCount = await db.get('SELECT COUNT(*) as count FROM vote_records WHERE vote_id = ?', [id]);
+    if (voteCount.count > 0) {
+      return res.status(400).json({ error: '已有投票记录，不能编辑' });
+    }
+
+    // 更新投票
+    await db.run(`
+      UPDATE votes SET title = ?, description = ?, updated_at = datetime('now') WHERE id = ?
+    `, [title, description || '', id]);
+
+    // 删除旧选项
+    await db.run('DELETE FROM vote_options WHERE vote_id = ?', [id]);
+
+    // 添加新选项
+    for (let i = 0; i < options.length; i++) {
+      await db.run(`
+        INSERT INTO vote_options (vote_id, content, sort_order)
+        VALUES (?, ?, ?)
+      `, [id, options[i], i]);
+    }
+
+    res.json({ success: true, message: '修改成功' });
+  } catch (error) {
+    logger.error('编辑投票失败:', error);
+    res.status(500).json({ error: '修改失败' });
   }
 });
 
@@ -461,6 +537,84 @@ router.put('/tasks/:id/close', authMiddleware, async (req, res) => {
   } catch (error) {
     logger.error('结束分工失败:', error);
     res.status(500).json({ error: '操作失败' });
+  }
+});
+
+// 删除分工
+router.delete('/tasks/:id', authMiddleware, async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const task = await db.get('SELECT * FROM tasks WHERE id = ?', [id]);
+    if (!task) {
+      return res.status(404).json({ error: '分工不存在' });
+    }
+
+    // 只有创建者或宿舍长可以删除
+    if (task.creator_id !== req.user.userId && req.user.role !== 'leader') {
+      return res.status(403).json({ error: '只有创建者或宿舍长可以删除分工' });
+    }
+
+    // 删除相关记录
+    await db.run('DELETE FROM task_records WHERE task_id = ?', [id]);
+    await db.run('DELETE FROM task_options WHERE task_id = ?', [id]);
+    await db.run('DELETE FROM tasks WHERE id = ?', [id]);
+
+    res.json({ success: true, message: '删除成功' });
+  } catch (error) {
+    logger.error('删除分工失败:', error);
+    res.status(500).json({ error: '删除失败' });
+  }
+});
+
+// 编辑分工
+router.put('/tasks/:id', authMiddleware, async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { title, description, options } = req.body;
+
+    const task = await db.get('SELECT * FROM tasks WHERE id = ?', [id]);
+    if (!task) {
+      return res.status(404).json({ error: '分工不存在' });
+    }
+
+    if (task.creator_id !== req.user.userId) {
+      return res.status(403).json({ error: '只有发起人可以编辑分工' });
+    }
+
+    if (task.status === 1) {
+      return res.status(400).json({ error: '已完成的分工不能编辑' });
+    }
+
+    // 检查是否有人选择
+    const hasSelection = await db.get(`
+      SELECT COUNT(*) as count FROM task_options 
+      WHERE task_id = ? AND assigned_to IS NOT NULL
+    `, [id]);
+    if (hasSelection.count > 0) {
+      return res.status(400).json({ error: '已有人选择分工，不能编辑' });
+    }
+
+    // 更新分工
+    await db.run(`
+      UPDATE tasks SET title = ?, description = ?, updated_at = datetime('now') WHERE id = ?
+    `, [title, description || '', id]);
+
+    // 删除旧选项
+    await db.run('DELETE FROM task_options WHERE task_id = ?', [id]);
+
+    // 添加新选项
+    for (let i = 0; i < options.length; i++) {
+      await db.run(`
+        INSERT INTO task_options (task_id, content, sort_order)
+        VALUES (?, ?, ?)
+      `, [id, options[i], i]);
+    }
+
+    res.json({ success: true, message: '修改成功' });
+  } catch (error) {
+    logger.error('编辑分工失败:', error);
+    res.status(500).json({ error: '修改失败' });
   }
 });
 

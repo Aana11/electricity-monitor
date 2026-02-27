@@ -17,9 +17,17 @@ const router = createRouter({
       meta: { requiresAuth: true }
     },
     {
-      path: '/electricity/login',
+      path: '/dashboard',
+      redirect: '/electricity'
+    },
+    {
+      path: '/login',
       name: 'Login',
       component: () => import('../views/Login.vue')
+    },
+    {
+      path: '/electricity/login',
+      redirect: '/login'
     },
     {
       path: '/electricity/rankings',
@@ -77,8 +85,8 @@ router.beforeEach((to, from, next) => {
   const userStore = useUserStore()
   
   if (to.meta.requiresAuth && !userStore.token) {
-    next('/electricity/login')
-  } else if (to.path === '/electricity/login' && userStore.token) {
+    next('/login')
+  } else if (to.path === '/login' && userStore.token) {
     next('/')
   } else {
     next()

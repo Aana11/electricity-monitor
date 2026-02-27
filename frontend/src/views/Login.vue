@@ -5,8 +5,8 @@
         <div class="logo animate-float">
           <Lightning class="logo-icon" />
         </div>
-        <h1 class="title">NNNU<span class="highlight">电费监控</span></h1>
-        <p class="subtitle">南宁师范大学宿舍电费实时监控系统</p>
+        <h1 class="title">南宁师范大学<span class="highlight">宿舍三两事</span></h1>
+        <p class="subtitle">宿舍事务 | 投票抽签 | 电费监控一站式平台</p>
       </div>
       
       <el-form 
@@ -37,6 +37,34 @@
             clearable
           />
         </el-form-item>
+
+        <!-- 身份选择 -->
+        <div class="role-select">
+          <div class="role-label">选择身份：</div>
+          <div class="role-buttons">
+            <div 
+              class="role-glass-btn" 
+              :class="{ active: form.role === 'leader' }"
+              @click="form.role = 'leader'"
+            >
+              <span class="role-icon">👑</span>
+              <span>宿舍长</span>
+            </div>
+            <div 
+              class="role-glass-btn" 
+              :class="{ active: form.role === 'member' }"
+              @click="form.role = 'member'"
+            >
+              <span class="role-icon">👤</span>
+              <span>宿舍成员</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 记住密码 -->
+        <div class="remember-row">
+          <el-checkbox v-model="form.remember" size="large">记住密码</el-checkbox>
+        </div>
         
         <el-button
           type="primary"
@@ -51,6 +79,11 @@
       
       <div class="login-footer">
         <p class="tip">使用学校电费网站账号直接登录</p>
+        <div class="login-links">
+          <a href="http://wsxf.nnnu.edu.cn/" target="_blank" class="link">忘记密码?</a>
+          <span class="divider">|</span>
+          <a href="http://wsxf.nnnu.edu.cn/" target="_blank" class="link">新用户注册</a>
+        </div>
         <p class="security"><Lock class="lock-icon" /> 密码加密存储，仅用于数据采集</p>
       </div>
     </div>
@@ -65,7 +98,7 @@
 </template>
 
 <script setup>
-import { ref, reactive } from 'vue'
+import { ref, reactive, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
 import { User, Lock, Lightning } from '@element-plus/icons-vue'
@@ -78,8 +111,10 @@ const formRef = ref(null)
 const loading = ref(false)
 
 const form = reactive({
-  account: '',
-  password: ''
+  account: localStorage.getItem('saved_account') || '',
+  password: localStorage.getItem('saved_password') || '',
+  role: 'member',  // 默认为宿舍成员
+  remember: localStorage.getItem('remember_me') === 'true'
 })
 
 const rules = {
@@ -101,13 +136,25 @@ const handleLogin = async () => {
     
     loading.value = true
     try {
-      const res = await authApi.login(form.account, form.password)
+      const res = await authApi.login(form.account, form.password, form.role)
       
       if (res.data.success) {
         userStore.setToken(res.data.token)
         userStore.setUser(res.data.user)
+        
+        // 处理记住密码
+        if (form.remember) {
+          localStorage.setItem('saved_account', form.account)
+          localStorage.setItem('saved_password', form.password)
+          localStorage.setItem('remember_me', 'true')
+        } else {
+          localStorage.removeItem('saved_account')
+          localStorage.removeItem('saved_password')
+          localStorage.setItem('remember_me', 'false')
+        }
+        
         ElMessage.success('登录成功！')
-        router.push('/dashboard')
+        router.push('/')
       }
     } catch (error) {
       const msg = error.response?.data?.error || '登录失败，请检查账号密码'
@@ -117,6 +164,13 @@ const handleLogin = async () => {
     }
   })
 }
+
+// 已登录则跳转首页
+onMounted(() => {
+  if (userStore.token) {
+    router.push('/electricity')
+  }
+})
 </script>
 
 <style scoped>
@@ -188,6 +242,68 @@ const handleLogin = async () => {
   margin-bottom: 32px;
 }
 
+.role-select {
+  margin-bottom: 24px;
+}
+
+.role-label {
+  font-size: 14px;
+  color: #4a5568;
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+
+.role-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.role-glass-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 20px;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 15px;
+  color: #4a5568;
+  font-weight: 500;
+}
+
+.role-glass-btn:hover {
+  background: rgba(255, 255, 255, 0.4);
+  border-color: rgba(102, 126, 234, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(102, 126, 234, 0.15);
+}
+
+.role-glass-btn.active {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.2) 0%, rgba(118, 75, 162, 0.2) 100%);
+  border-color: #667eea;
+  color: #667eea;
+  box-shadow: 0 4px 16px rgba(102, 126, 234, 0.2);
+}
+
+.remember-row {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.remember-row :deep(.el-checkbox__label) {
+  color: #4a5568;
+}
+
+.role-icon {
+  font-size: 18px;
+}
+
 .login-btn {
   width: 100%;
   height: 48px;
@@ -208,10 +324,35 @@ const handleLogin = async () => {
   text-align: center;
 }
 
+.login-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.login-links .link {
+  color: #667eea;
+  font-size: 13px;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.login-links .link:hover {
+  color: #764ba2;
+  text-decoration: underline;
+}
+
+.login-links .divider {
+  color: #cbd5e0;
+  font-size: 12px;
+}
+
 .tip {
   color: #a0aec0;
   font-size: 13px;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 }
 
 .security {
