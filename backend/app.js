@@ -56,6 +56,47 @@ app.use('/api/', limiter);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// API响应缓存中间件
+const apiCache = new Map();
+const CACHE_DURATION = 5 * 60 * 1000; // 5分钟缓存
+
+function cacheMiddleware(req, res, next) {
+  // 只对GET请求缓存
+  if (req.method !== 'GET') {
+    return next();
+  }
+  
+  const key = req.originalUrl + JSON.stringify(req.query);
+  const cached = apiCache.get(key);
+  
+  if (cached && Date.now() - cached.timestamp < CACHE_DURATION) {
+    res.set('X-Cache', 'HIT');
+    return res.json(cached.data);
+  }
+  
+  // 保存原始json方法
+  const originalJson = res.json.bind(res);
+  
+  res.json = (data) => {
+    // 只缓存成功的响应
+    if (data && data.success !== false) {
+      apiCache.set(key, {
+        data,
+        timestamp: Date.now()
+      });
+    }
+    res.set('X-Cache', 'MISS');
+    res.set('Cache-Control', 'private, max-age=300');
+    return originalJson(data);
+  };
+  
+  next();
+}
+
+// 对电费相关API使用缓存
+app.use('/api/electricity', cacheMiddleware);
+app.use('/api/rankings', cacheMiddleware);
+
 // API路由
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/electricity', require('./routes/electricity'));
@@ -68,6 +109,7 @@ app.use('/api/votes', require('./routes/votes'));
 app.use('/api/lottery', require('./routes/lottery'));
 app.use('/api/email', require('./routes/email'));
 app.use('/api/user', require('./routes/user'));
+app.use('/api/update', require('./routes/update'));
 
 // 静态文件服务已在前面配置
 

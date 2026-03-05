@@ -465,3 +465,419 @@ Error: bind EADDRINUSE null:80
   code: 'ERR_ERL_UNEXPECTED_X_FORWARDED_FOR',
   help: 'https://express-rate-limit.github.io/ERR_ERL_UNEXPECTED_X_FORWARDED_FOR/'
 }
+2026-03-02 18:38:46: 检查更新失败: Error: ENOENT: no such file or directory, open '/root/.openclaw/workspace/electricity-system/public/update.json'
+    at Object.readFileSync (node:fs:439:20)
+    at /root/.openclaw/workspace/electricity-system/backend/routes/update.js:17:40
+    at Layer.handle [as handle_request] (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/layer.js:95:5)
+    at next (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/layer.js:95:5)
+    at /root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:284:15
+    at router.process_params (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:346:12)
+    at next (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:280:10)
+    at router.handle (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:175:3) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/root/.openclaw/workspace/electricity-system/public/update.json'
+}
+2026-03-02 18:39:14: 检查更新失败: Error: ENOENT: no such file or directory, open '/root/.openclaw/workspace/electricity-system/public/update.json'
+    at Object.readFileSync (node:fs:439:20)
+    at /root/.openclaw/workspace/electricity-system/backend/routes/update.js:17:40
+    at Layer.handle [as handle_request] (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/layer.js:95:5)
+    at next (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/layer.js:95:5)
+    at /root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:284:15
+    at router.process_params (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:346:12)
+    at next (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:280:10)
+    at router.handle (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:175:3) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/root/.openclaw/workspace/electricity-system/public/update.json'
+}
+2026-03-02 18:39:21: 检查更新失败: Error: ENOENT: no such file or directory, open '/root/.openclaw/workspace/electricity-system/public/update.json'
+    at Object.readFileSync (node:fs:439:20)
+    at /root/.openclaw/workspace/electricity-system/backend/routes/update.js:17:40
+    at Layer.handle [as handle_request] (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/layer.js:95:5)
+    at next (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/layer.js:95:5)
+    at /root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:284:15
+    at router.process_params (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:346:12)
+    at next (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:280:10)
+    at router.handle (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:175:3) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/root/.openclaw/workspace/electricity-system/public/update.json'
+}
+2026-03-02 22:05:16: 检查更新失败: Error: ENOENT: no such file or directory, open '/root/.openclaw/workspace/electricity-system/public/update.json'
+    at Object.readFileSync (node:fs:439:20)
+    at /root/.openclaw/workspace/electricity-system/backend/routes/update.js:17:40
+    at Layer.handle [as handle_request] (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/layer.js:95:5)
+    at next (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/layer.js:95:5)
+    at /root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:284:15
+    at router.process_params (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:346:12)
+    at next (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:280:10)
+    at router.handle (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:175:3) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/root/.openclaw/workspace/electricity-system/public/update.json'
+}
+2026-03-02 22:05:45: 检查更新失败: Error: ENOENT: no such file or directory, open '/root/.openclaw/workspace/electricity-system/public/update.json'
+    at Object.readFileSync (node:fs:439:20)
+    at /root/.openclaw/workspace/electricity-system/backend/routes/update.js:17:40
+    at Layer.handle [as handle_request] (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/layer.js:95:5)
+    at next (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/layer.js:95:5)
+    at /root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:284:15
+    at router.process_params (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:346:12)
+    at next (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:280:10)
+    at router.handle (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:175:3) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/root/.openclaw/workspace/electricity-system/public/update.json'
+}
+2026-03-02 22:05:50: 检查更新失败: Error: ENOENT: no such file or directory, open '/root/.openclaw/workspace/electricity-system/public/update.json'
+    at Object.readFileSync (node:fs:439:20)
+    at /root/.openclaw/workspace/electricity-system/backend/routes/update.js:17:40
+    at Layer.handle [as handle_request] (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/layer.js:95:5)
+    at next (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/layer.js:95:5)
+    at /root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:284:15
+    at router.process_params (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:346:12)
+    at next (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:280:10)
+    at router.handle (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:175:3) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/root/.openclaw/workspace/electricity-system/public/update.json'
+}
+2026-03-02 23:15:32: 检查更新失败: Error: ENOENT: no such file or directory, open '/root/.openclaw/workspace/electricity-system/public/update.json'
+    at Object.readFileSync (node:fs:439:20)
+    at /root/.openclaw/workspace/electricity-system/backend/routes/update.js:17:40
+    at Layer.handle [as handle_request] (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/layer.js:95:5)
+    at next (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/layer.js:95:5)
+    at /root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:284:15
+    at router.process_params (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:346:12)
+    at next (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:280:10)
+    at router.handle (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:175:3) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/root/.openclaw/workspace/electricity-system/public/update.json'
+}
+2026-03-03 00:13:19: 检查更新失败: Error: ENOENT: no such file or directory, open '/root/.openclaw/workspace/electricity-system/public/update.json'
+    at Object.readFileSync (node:fs:439:20)
+    at /root/.openclaw/workspace/electricity-system/backend/routes/update.js:17:40
+    at Layer.handle [as handle_request] (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/layer.js:95:5)
+    at next (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/layer.js:95:5)
+    at /root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:284:15
+    at router.process_params (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:346:12)
+    at next (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:280:10)
+    at router.handle (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:175:3) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/root/.openclaw/workspace/electricity-system/public/update.json'
+}
+2026-03-03 00:13:39: 检查更新失败: Error: ENOENT: no such file or directory, open '/root/.openclaw/workspace/electricity-system/public/update.json'
+    at Object.readFileSync (node:fs:439:20)
+    at /root/.openclaw/workspace/electricity-system/backend/routes/update.js:17:40
+    at Layer.handle [as handle_request] (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/layer.js:95:5)
+    at next (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/layer.js:95:5)
+    at /root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:284:15
+    at router.process_params (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:346:12)
+    at next (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:280:10)
+    at router.handle (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:175:3) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/root/.openclaw/workspace/electricity-system/public/update.json'
+}
+2026-03-03 00:14:36: 检查更新失败: Error: ENOENT: no such file or directory, open '/root/.openclaw/workspace/electricity-system/public/update.json'
+    at Object.readFileSync (node:fs:439:20)
+    at /root/.openclaw/workspace/electricity-system/backend/routes/update.js:17:40
+    at Layer.handle [as handle_request] (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/layer.js:95:5)
+    at next (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/layer.js:95:5)
+    at /root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:284:15
+    at router.process_params (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:346:12)
+    at next (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:280:10)
+    at router.handle (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:175:3) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/root/.openclaw/workspace/electricity-system/public/update.json'
+}
+2026-03-03 00:30:15: 检查更新失败: Error: ENOENT: no such file or directory, open '/root/.openclaw/workspace/electricity-system/public/update.json'
+    at Object.readFileSync (node:fs:439:20)
+    at /root/.openclaw/workspace/electricity-system/backend/routes/update.js:17:40
+    at Layer.handle [as handle_request] (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/layer.js:95:5)
+    at next (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/layer.js:95:5)
+    at /root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:284:15
+    at router.process_params (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:346:12)
+    at next (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:280:10)
+    at router.handle (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:175:3) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/root/.openclaw/workspace/electricity-system/public/update.json'
+}
+2026-03-03 00:30:22: 检查更新失败: Error: ENOENT: no such file or directory, open '/root/.openclaw/workspace/electricity-system/public/update.json'
+    at Object.readFileSync (node:fs:439:20)
+    at /root/.openclaw/workspace/electricity-system/backend/routes/update.js:17:40
+    at Layer.handle [as handle_request] (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/layer.js:95:5)
+    at next (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/layer.js:95:5)
+    at /root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:284:15
+    at router.process_params (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:346:12)
+    at next (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:280:10)
+    at router.handle (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:175:3) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/root/.openclaw/workspace/electricity-system/public/update.json'
+}
+2026-03-03 00:30:25: 检查更新失败: Error: ENOENT: no such file or directory, open '/root/.openclaw/workspace/electricity-system/public/update.json'
+    at Object.readFileSync (node:fs:439:20)
+    at /root/.openclaw/workspace/electricity-system/backend/routes/update.js:17:40
+    at Layer.handle [as handle_request] (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/layer.js:95:5)
+    at next (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/layer.js:95:5)
+    at /root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:284:15
+    at router.process_params (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:346:12)
+    at next (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:280:10)
+    at router.handle (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:175:3) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/root/.openclaw/workspace/electricity-system/public/update.json'
+}
+2026-03-03 00:48:03: 检查更新失败: Error: ENOENT: no such file or directory, open '/root/.openclaw/workspace/electricity-system/public/update.json'
+    at Object.readFileSync (node:fs:439:20)
+    at /root/.openclaw/workspace/electricity-system/backend/routes/update.js:17:40
+    at Layer.handle [as handle_request] (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/layer.js:95:5)
+    at next (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/layer.js:95:5)
+    at /root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:284:15
+    at router.process_params (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:346:12)
+    at next (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:280:10)
+    at router.handle (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:175:3) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/root/.openclaw/workspace/electricity-system/public/update.json'
+}
+2026-03-03 00:48:12: 检查更新失败: Error: ENOENT: no such file or directory, open '/root/.openclaw/workspace/electricity-system/public/update.json'
+    at Object.readFileSync (node:fs:439:20)
+    at /root/.openclaw/workspace/electricity-system/backend/routes/update.js:17:40
+    at Layer.handle [as handle_request] (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/layer.js:95:5)
+    at next (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/layer.js:95:5)
+    at /root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:284:15
+    at router.process_params (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:346:12)
+    at next (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:280:10)
+    at router.handle (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:175:3) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/root/.openclaw/workspace/electricity-system/public/update.json'
+}
+2026-03-03 00:48:19: 检查更新失败: Error: ENOENT: no such file or directory, open '/root/.openclaw/workspace/electricity-system/public/update.json'
+    at Object.readFileSync (node:fs:439:20)
+    at /root/.openclaw/workspace/electricity-system/backend/routes/update.js:17:40
+    at Layer.handle [as handle_request] (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/layer.js:95:5)
+    at next (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/layer.js:95:5)
+    at /root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:284:15
+    at router.process_params (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:346:12)
+    at next (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:280:10)
+    at router.handle (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:175:3) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/root/.openclaw/workspace/electricity-system/public/update.json'
+}
+2026-03-03 00:48:21: 检查更新失败: Error: ENOENT: no such file or directory, open '/root/.openclaw/workspace/electricity-system/public/update.json'
+    at Object.readFileSync (node:fs:439:20)
+    at /root/.openclaw/workspace/electricity-system/backend/routes/update.js:17:40
+    at Layer.handle [as handle_request] (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/layer.js:95:5)
+    at next (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/layer.js:95:5)
+    at /root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:284:15
+    at router.process_params (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:346:12)
+    at next (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:280:10)
+    at router.handle (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:175:3) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/root/.openclaw/workspace/electricity-system/public/update.json'
+}
+2026-03-03 00:48:31: 检查更新失败: Error: ENOENT: no such file or directory, open '/root/.openclaw/workspace/electricity-system/public/update.json'
+    at Object.readFileSync (node:fs:439:20)
+    at /root/.openclaw/workspace/electricity-system/backend/routes/update.js:17:40
+    at Layer.handle [as handle_request] (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/layer.js:95:5)
+    at next (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/layer.js:95:5)
+    at /root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:284:15
+    at router.process_params (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:346:12)
+    at next (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:280:10)
+    at router.handle (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:175:3) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/root/.openclaw/workspace/electricity-system/public/update.json'
+}
+2026-03-03 01:14:27: 检查更新失败: Error: ENOENT: no such file or directory, open '/root/.openclaw/workspace/electricity-system/public/update.json'
+    at Object.readFileSync (node:fs:439:20)
+    at /root/.openclaw/workspace/electricity-system/backend/routes/update.js:17:40
+    at Layer.handle [as handle_request] (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/layer.js:95:5)
+    at next (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/layer.js:95:5)
+    at /root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:284:15
+    at router.process_params (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:346:12)
+    at next (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:280:10)
+    at router.handle (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:175:3) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/root/.openclaw/workspace/electricity-system/public/update.json'
+}
+2026-03-03 01:14:30: 检查更新失败: Error: ENOENT: no such file or directory, open '/root/.openclaw/workspace/electricity-system/public/update.json'
+    at Object.readFileSync (node:fs:439:20)
+    at /root/.openclaw/workspace/electricity-system/backend/routes/update.js:17:40
+    at Layer.handle [as handle_request] (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/layer.js:95:5)
+    at next (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/layer.js:95:5)
+    at /root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:284:15
+    at router.process_params (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:346:12)
+    at next (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:280:10)
+    at router.handle (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:175:3) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/root/.openclaw/workspace/electricity-system/public/update.json'
+}
+2026-03-03 02:39:56: 检查更新失败: Error: ENOENT: no such file or directory, open '/root/.openclaw/workspace/electricity-system/public/update.json'
+    at Object.readFileSync (node:fs:439:20)
+    at /root/.openclaw/workspace/electricity-system/backend/routes/update.js:17:40
+    at Layer.handle [as handle_request] (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/layer.js:95:5)
+    at next (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/layer.js:95:5)
+    at /root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:284:15
+    at router.process_params (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:346:12)
+    at next (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:280:10)
+    at router.handle (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:175:3) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/root/.openclaw/workspace/electricity-system/public/update.json'
+}
+2026-03-03 02:40:29: 检查更新失败: Error: ENOENT: no such file or directory, open '/root/.openclaw/workspace/electricity-system/public/update.json'
+    at Object.readFileSync (node:fs:439:20)
+    at /root/.openclaw/workspace/electricity-system/backend/routes/update.js:17:40
+    at Layer.handle [as handle_request] (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/layer.js:95:5)
+    at next (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/layer.js:95:5)
+    at /root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:284:15
+    at router.process_params (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:346:12)
+    at next (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:280:10)
+    at router.handle (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:175:3) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/root/.openclaw/workspace/electricity-system/public/update.json'
+}
+2026-03-03 11:16:05: 检查更新失败: Error: ENOENT: no such file or directory, open '/root/.openclaw/workspace/electricity-system/public/update.json'
+    at Object.readFileSync (node:fs:439:20)
+    at /root/.openclaw/workspace/electricity-system/backend/routes/update.js:17:40
+    at Layer.handle [as handle_request] (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/layer.js:95:5)
+    at next (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/layer.js:95:5)
+    at /root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:284:15
+    at router.process_params (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:346:12)
+    at next (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:280:10)
+    at router.handle (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:175:3) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/root/.openclaw/workspace/electricity-system/public/update.json'
+}
+2026-03-03 11:18:12: 检查更新失败: Error: ENOENT: no such file or directory, open '/root/.openclaw/workspace/electricity-system/public/update.json'
+    at Object.readFileSync (node:fs:439:20)
+    at /root/.openclaw/workspace/electricity-system/backend/routes/update.js:17:40
+    at Layer.handle [as handle_request] (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/layer.js:95:5)
+    at next (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/layer.js:95:5)
+    at /root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:284:15
+    at router.process_params (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:346:12)
+    at next (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:280:10)
+    at router.handle (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:175:3) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/root/.openclaw/workspace/electricity-system/public/update.json'
+}
+2026-03-03 11:22:11: 检查更新失败: Error: ENOENT: no such file or directory, open '/root/.openclaw/workspace/electricity-system/public/update.json'
+    at Object.readFileSync (node:fs:439:20)
+    at /root/.openclaw/workspace/electricity-system/backend/routes/update.js:18:40
+    at Layer.handle [as handle_request] (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/layer.js:95:5)
+    at next (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/layer.js:95:5)
+    at /root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:284:15
+    at router.process_params (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:346:12)
+    at next (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:280:10)
+    at router.handle (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:175:3) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/root/.openclaw/workspace/electricity-system/public/update.json'
+}
+2026-03-03 11:22:17: 检查更新失败: Error: ENOENT: no such file or directory, open '/root/.openclaw/workspace/electricity-system/public/update.json'
+    at Object.readFileSync (node:fs:439:20)
+    at /root/.openclaw/workspace/electricity-system/backend/routes/update.js:18:40
+    at Layer.handle [as handle_request] (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/layer.js:95:5)
+    at next (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/layer.js:95:5)
+    at /root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:284:15
+    at router.process_params (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:346:12)
+    at next (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:280:10)
+    at router.handle (/root/.openclaw/workspace/electricity-system/backend/node_modules/express/lib/router/index.js:175:3) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/root/.openclaw/workspace/electricity-system/public/update.json'
+}

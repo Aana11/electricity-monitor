@@ -515,8 +515,11 @@ const formatNumber = (num) => {
 
 const formatTime = (time) => {
   if (!time) return '--'
+  // 将时间字符串转换为北京时间 (UTC+8)
   const date = new Date(time)
-  return `${date.getMonth() + 1}月${date.getDate()}日 ${String(date.getHours()).padStart(2, '0')}:${String(date.getMinutes()).padStart(2, '0')}`
+  // 使用 toLocaleString 确保显示为本地时间（北京时间）
+  const beijingTime = new Date(date.toLocaleString('en-US', { timeZone: 'Asia/Shanghai' }))
+  return `${beijingTime.getMonth() + 1}月${beijingTime.getDate()}日 ${String(beijingTime.getHours()).padStart(2, '0')}:${String(beijingTime.getMinutes()).padStart(2, '0')}`
 }
 
 onMounted(() => {

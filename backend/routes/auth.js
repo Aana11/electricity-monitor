@@ -37,13 +37,9 @@ router.post('/login', async (req, res) => {
       const requestedRole = role === 'leader' ? 'leader' : 'member';
       
       if (existingUser.role === 'leader' && requestedRole === 'member') {
-        // 原来是宿舍长，想改成成员 - 不允许
-        return res.status(400).json({ 
-          error: '您当前是宿舍长身份，要更改身份请登录后在设置中操作' 
-        });
-      }
-      
-      if (existingUser.role === 'member' && requestedRole === 'leader') {
+        // 原来是宿舍长，APP选了成员 - 自动以宿舍长身份登录
+        finalRole = 'leader';
+      } else if (existingUser.role === 'member' && requestedRole === 'leader') {
         // 原来是成员，想升级成宿舍长 - 检查是否已有宿舍长
         const existingLeader = await db.get(
           "SELECT * FROM users WHERE room_name = ? AND role = 'leader' AND is_active = 1 AND id != ?",
