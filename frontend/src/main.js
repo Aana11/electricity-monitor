@@ -21,18 +21,31 @@ app.use(ElementPlus)
 
 app.mount('#app')
 
-// 注册Service Worker (PWA)
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js')
-      .then((registration) => {
-        console.log('SW注册成功:', registration.scope)
-      })
-      .catch((error) => {
-        console.log('SW注册失败:', error)
-      })
-  })
-}
+// PWA Service Worker 注册 (vite-plugin-pwa 虚拟模块)
+import { registerSW } from 'virtual:pwa-register'
+
+const updateSW = registerSW({
+  immediate: true,
+  onNeedRefresh() {
+    // 有新版本可用，可以提示用户刷新
+    console.log('PWA: 有新版本可用，请刷新页面更新')
+  },
+  onOfflineReady() {
+    console.log('PWA: 应用已准备好离线使用')
+  },
+  onRegistered(r) {
+    if (r) {
+      console.log('PWA: Service Worker 注册成功')
+      // 每小时检查一次更新
+      setInterval(() => {
+        r.update()
+      }, 60 * 60 * 1000)
+    }
+  },
+  onRegisterError(error) {
+    console.error('PWA: Service Worker 注册失败', error)
+  }
+})
 
 // 请求通知权限
 if ('Notification' in window) {

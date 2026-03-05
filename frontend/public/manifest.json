@@ -8,66 +8,72 @@
   "orientation": "any",
   "scope": "/",
   "start_url": "/",
-  "id": "/",
+  "id": "/?source=pwa",
   "categories": ["utilities", "productivity"],
   "lang": "zh-CN",
   "dir": "ltr",
+  "prefer_related_applications": false,
+  "related_applications": [],
+  "share_target": {
+    "action": "/share-handler",
+    "method": "POST",
+    "enctype": "multipart/form-data",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url",
+      "files": [
+        {
+          "name": "attachments",
+          "accept": ["image/*", "text/*", "application/pdf"]
+        }
+      ]
+    }
+  },
   "icons": [
     {
-      "src": "/icon-72x72.svg",
-      "sizes": "72x72",
-      "type": "image/svg+xml"
-    },
-    {
-      "src": "/icon-96x96.svg",
+      "src": "/icons/icon-96x96.png",
       "sizes": "96x96",
-      "type": "image/svg+xml"
+      "type": "image/png"
     },
     {
-      "src": "/icon-128x128.svg",
+      "src": "/icons/icon-128x128.png",
       "sizes": "128x128",
-      "type": "image/svg+xml"
+      "type": "image/png"
     },
     {
-      "src": "/icon-144x144.svg",
-      "sizes": "144x144",
-      "type": "image/svg+xml"
-    },
-    {
-      "src": "/icon-152x152.svg",
-      "sizes": "152x152",
-      "type": "image/svg+xml"
-    },
-    {
-      "src": "/icon-192x192.svg",
+      "src": "/icons/icon-192x192.png",
       "sizes": "192x192",
-      "type": "image/svg+xml",
-      "purpose": "any maskable"
+      "type": "image/png"
     },
     {
-      "src": "/icon-384x384.svg",
-      "sizes": "384x384",
-      "type": "image/svg+xml"
-    },
-    {
-      "src": "/icon-512x512.svg",
+      "src": "/icons/icon-512x512.png",
       "sizes": "512x512",
-      "type": "image/svg+xml",
+      "type": "image/png",
       "purpose": "any maskable"
     }
   ],
   "screenshots": [
     {
-      "src": "/screenshot-wide.png",
+      "src": "/screenshots/dashboard-desktop.jpg",
       "sizes": "1280x720",
-      "type": "image/png",
-      "form_factor": "wide"
+      "type": "image/jpeg",
+      "form_factor": "wide",
+      "label": "电费监控仪表板"
     },
     {
-      "src": "/screenshot-narrow.png",
-      "sizes": "750x1334",
-      "type": "image/png",
-      "form_factor": "narrow"
+      "src": "/screenshots/home-desktop.jpg",
+      "sizes": "1280x720",
+      "type": "image/jpeg",
+      "form_factor": "wide",
+      "label": "首页功能导航"
+    },
+    {
+      "src": "/screenshots/dashboard-mobile.jpg",
+      "sizes": "719x1280",
+      "type": "image/jpeg",
+      "form_factor": "narrow",
+      "label": "手机端电费监控"
     }
   ],
   "shortcuts": [
@@ -76,14 +82,14 @@
       "short_name": "电费",
       "description": "查看实时电费余额",
       "url": "/electricity",
-      "icons": [{ "src": "/icon-96x96.svg", "sizes": "96x96" }]
+      "icons": [{ "src": "/icons/icon-96x96.png", "sizes": "96x96", "type": "image/png" }]
     },
     {
       "name": "投票抽签",
       "short_name": "投票",
       "description": "参与宿舍投票和抽签",
       "url": "/votes",
-      "icons": [{ "src": "/icon-96x96.svg", "sizes": "96x96" }]
+      "icons": [{ "src": "/icons/icon-96x96.png", "sizes": "96x96", "type": "image/png" }]
     }
   ]
 }

@@ -1,132 +1,121 @@
-// Service Worker for NNNU电费监控
-const CACHE_NAME = 'electricity-monitor-v2'
+// 宿舍三两事 - Service Worker
+const CACHE_NAME = 'dormitory-app-v1'
+const CACHE_ASSETS = [
+  '/',
+  '/index.html',
+  '/manifest.json',
+  // 图标
+  '/icons/icon-96x96.png',
+  '/icons/icon-128x128.png',
+  '/icons/icon-192x192.png',
+  '/icons/icon-512x512.png',
+  // 截图（可选，占用空间大）
+  // '/screenshots/dashboard-desktop.jpg',
+  // '/screenshots/home-desktop.jpg',
+  // '/screenshots/dashboard-mobile.jpg'
+]
 
-// 安装时清理旧缓存
+// ===== 安装：缓存核心资源 =====
 self.addEventListener('install', (event) => {
+  console.log('[SW] 安装中...')
+  
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      console.log('SW: Cache opened')
-    })
+    caches.open(CACHE_NAME)
+      .then((cache) => {
+        console.log('[SW] 缓存核心资源')
+        return cache.addAll(CACHE_ASSETS)
+      })
+      .then(() => {
+        console.log('[SW] 安装完成')
+        return self.skipWaiting()
+      })
+      .catch((err) => {
+        console.error('[SW] 缓存失败:', err)
+      })
   )
-  self.skipWaiting()
 })
 
-// 激活时清理旧缓存
+// ===== 激活：清理旧缓存 =====
 self.addEventListener('activate', (event) => {
+  console.log('[SW] 激活中...')
+  
   event.waitUntil(
     caches.keys().then((cacheNames) => {
       return Promise.all(
         cacheNames.map((cacheName) => {
           if (cacheName !== CACHE_NAME) {
-            console.log('SW: Deleting old cache', cacheName)
+            console.log('[SW] 删除旧缓存:', cacheName)
             return caches.delete(cacheName)
           }
         })
       )
+    }).then(() => {
+      console.log('[SW] 激活完成')
+      return self.clients.claim()
     })
   )
-  self.clients.claim()
 })
 
-// 判断请求是否应该缓存
-function shouldCache(request) {
-  const url = new URL(request.url)
-  const pathname = url.pathname
-  
-  // 不缓存HTML文件
-  if (pathname.endsWith('.html') || pathname === '/' || pathname === '/index.html') {
-    return false
-  }
-  
-  // 不缓存API请求
-  if (pathname.startsWith('/api/')) {
-    return false
-  }
-  
-  // 不缓存manifest.json和sw.js
-  if (pathname.endsWith('manifest.json') || pathname.endsWith('sw.js')) {
-    return false
-  }
-  
-  // 缓存带哈希的JS/CSS文件
-  if (/\.[0-9a-z]{8,}\.(js|css)$/.test(pathname)) {
-    return true
-  }
-  
-  // 缓存图片和字体
-  if (/\.(jpg|jpeg|png|gif|ico|svg|woff|woff2|ttf|eot)$/.test(pathname)) {
-    return true
-  }
-  
-  return false
-}
-
-// 拦截请求
+// ===== 拦截请求：缓存优先策略 =====
 self.addEventListener('fetch', (event) => {
   const { request } = event
+  const url = new URL(request.url)
   
-  // 网络优先策略（用于HTML和API）
-  if (!shouldCache(request)) {
-    event.respondWith(
-      fetch(request).catch(() => {
-        // 网络失败时尝试从缓存读取（仅用于离线体验）
-        return caches.match(request).then((response) => {
-          if (response) {
-            return response
-          }
-          // 如果缓存也没有，返回离线页面或错误
-          if (request.mode === 'navigate') {
-            return caches.match('/index.html')
-          }
-          return new Response('Network error', { status: 408 })
-        })
-      })
-    )
+  // 跳过非 GET 请求
+  if (request.method !== 'GET') {
     return
   }
   
-  // 缓存优先策略（用于静态资源）
+  // 跳过 API 请求
+  if (url.pathname.startsWith('/api/')) {
+    return
+  }
+  
+  // 缓存优先策略
   event.respondWith(
     caches.match(request).then((cachedResponse) => {
-      // 如果有缓存，先返回缓存，同时更新缓存
-      const fetchPromise = fetch(request).then((networkResponse) => {
-        if (networkResponse.status === 200) {
+      // 1. 如果有缓存，直接返回缓存
+      if (cachedResponse) {
+        console.log('[SW] 缓存命中:', url.pathname)
+        
+        // 后台更新缓存（可选）
+        fetch(request).then((networkResponse) => {
+          if (networkResponse.ok) {
+            caches.open(CACHE_NAME).then((cache) => {
+              cache.put(request, networkResponse.clone())
+            })
+          }
+        }).catch(() => {})
+        
+        return cachedResponse
+      }
+      
+      // 2. 没有缓存，走网络请求
+      console.log('[SW] 网络请求:', url.pathname)
+      return fetch(request).then((networkResponse) => {
+        // 缓存成功的响应
+        if (networkResponse.ok) {
           const responseToCache = networkResponse.clone()
           caches.open(CACHE_NAME).then((cache) => {
             cache.put(request, responseToCache)
           })
         }
         return networkResponse
-      }).catch(() => cachedResponse)
-      
-      return cachedResponse || fetchPromise
+      }).catch((error) => {
+        console.error('[SW] 网络失败:', url.pathname, error)
+        // 3. 网络和缓存都没有，返回离线页面
+        if (request.mode === 'navigate') {
+          return caches.match('/index.html')
+        }
+        throw error
+      })
     })
   )
 })
 
-// 处理推送通知
-self.addEventListener('push', (event) => {
-  const options = {
-    body: event.data?.text() || '电费预警提醒',
-    icon: '/icon-192x192.png',
-    badge: '/icon-72x72.png',
-    vibrate: [200, 100, 200],
-    tag: 'electricity-alert',
-    requireInteraction: true,
-    data: {
-      url: '/'
-    }
+// ===== 消息处理（用于跳过等待）=====
+self.addEventListener('message', (event) => {
+  if (event.data === 'skipWaiting') {
+    self.skipWaiting()
   }
-  
-  event.waitUntil(
-    self.registration.showNotification('NNNU电费监控', options)
-  )
-})
-
-// 点击通知
-self.addEventListener('notificationclick', (event) => {
-  event.notification.close()
-  event.waitUntil(
-    clients.openWindow(event.notification.data?.url || '/')
-  )
 })
