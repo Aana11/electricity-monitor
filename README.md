@@ -33,8 +33,9 @@
 
 ### 📱 Android APP
 - 提供原生 APK 下载
-- WebView 封装，体验更流畅
-- 与 PWA 共用一套后端 API
+- 新增 Jetpack Compose 原生界面版本（`android/`）
+- 根据网站布局实现首页、电费、投票、事务四大模块的原生导航
+- 与 PWA 共用一套后端 API（后续可直接接入）
 
 ## 🚀 PWA 特性
 
@@ -343,3 +344,15 @@ location.reload()
 > 💡 **提示**: 本应用为南宁师范大学宿舍定制开发，其他地区可能需要修改电费采集接口。
 
 > 🔒 **安全提醒**: 学校账号密码使用 AES 加密存储，请勿泄露密钥。
+
+
+### 5. Android 原生项目（可选）
+
+```bash
+cd android
+./gradlew assembleDebug
+```
+
+构建完成后可在 `android/app/build/outputs/apk/debug/` 获取调试 APK。
+
+> 说明：该 Android 项目使用 Jetpack Compose，视觉风格与网站保持一致，便于后续逐步替换 WebView 版本。
