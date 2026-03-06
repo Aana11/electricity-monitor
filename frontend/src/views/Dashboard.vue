@@ -167,10 +167,13 @@
         <div class="chart-card animate-fade-in" :style="{ animationDelay: '0.6s' }">
           <div class="chart-header">
             <h3>📈 余额趋势</h3>
-            <el-radio-group v-model="chartDays" size="small" @change="loadHistory">
-              <el-radio-button :label="7">7天</el-radio-button>
-              <el-radio-button :label="30">30天</el-radio-button>
-            </el-radio-group>
+            <div class="chart-controls">
+              <el-radio-group v-model="chartTimeRange" size="small" @change="onTimeRangeChange">
+                <el-radio-button label="24h">24小时</el-radio-button>
+                <el-radio-button label="7d">7天</el-radio-button>
+                <el-radio-button label="30d">30天</el-radio-button>
+              </el-radio-group>
+            </div>
           </div>
           
           <v-chart class="chart" :option="balanceChartOption" autoresize />
@@ -256,7 +259,7 @@ import { ElMessage } from 'element-plus'
 import { use } from 'echarts/core'
 import { CanvasRenderer } from 'echarts/renderers'
 import { LineChart, BarChart } from 'echarts/charts'
-import { GridComponent, TooltipComponent, LegendComponent } from 'echarts/components'
+import { GridComponent, TooltipComponent, LegendComponent, DataZoomComponent } from 'echarts/components'
 import VChart from 'vue-echarts'
 import {
   Lightning, DataLine, Trophy, Wallet, Refresh, Calendar, Cpu, Bell, ArrowRight, ArrowLeft
@@ -264,12 +267,13 @@ import {
 import { useUserStore } from '../stores/user.js'
 import { electricityApi } from '../api/index.js'
 
-use([CanvasRenderer, LineChart, BarChart, GridComponent, TooltipComponent, LegendComponent])
+use([CanvasRenderer, LineChart, BarChart, GridComponent, TooltipComponent, LegendComponent, DataZoomComponent])
 
 const router = useRouter()
 const userStore = useUserStore()
 const refreshing = ref(false)
 const chartDays = ref(7)
+const chartTimeRange = ref('24h')
 
 const currentData = ref({
   balance: 0,
@@ -298,21 +302,112 @@ const greeting = computed(() => {
 })
 
 const balanceChartOption = computed(() => {
-  const dates = historyData.value.map(d => {
-    const date = new Date(d.collected_at)
-    return `${date.getMonth() + 1}/${date.getDate()}`
-  })
-  const balances = historyData.value.map(d => d.balance)
+  // 将UTC时间转为北京时间的辅助函数
+  const toBeijingTime = (utcDateStr) => {
+    const date = new Date(utcDateStr)
+    return new Date(date.getTime() + 8 * 60 * 60 * 1000)
+  }
+  
+  // 根据时间范围过滤和处理数据
+  const now = new Date()
+  let filteredData = []
+  
+  if (chartTimeRange.value === '24h') {
+    // 24小时模式：每2小时保留一个点（共12个点），按北京时间
+    const cutoffTime = new Date(now.getTime() - 24 * 60 * 60 * 1000)
+    const dayData = historyData.value.filter(d => new Date(d.collected_at) >= cutoffTime)
+    
+    // 按北京时间每2小时分组，保留每组最后一个点
+    const hourGroups = new Map()
+    dayData.forEach(d => {
+      const bjTime = toBeijingTime(d.collected_at)
+      const hourKey = Math.floor(bjTime.getHours() / 2) * 2 // 0,2,4,6...22
+      const dayHourKey = `${bjTime.getMonth() + 1}/${bjTime.getDate()}_${hourKey}`
+      
+      // 每组只保留最后一个（最新的）
+      hourGroups.set(dayHourKey, d)
+    })
+    
+    filteredData = Array.from(hourGroups.values())
+      .sort((a, b) => new Date(a.collected_at) - new Date(b.collected_at))
+      .slice(-12) // 最多12个点
+  } else if (chartTimeRange.value === '7d') {
+    // 7天模式：按天采样，每天取最早和最晚点
+    const cutoffTime = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000)
+    const weekData = historyData.value.filter(d => new Date(d.collected_at) >= cutoffTime)
+    
+    // 按天分组，每天取平均值或取最早和最晚
+    const dayMap = new Map()
+    weekData.forEach(d => {
+      const date = new Date(d.collected_at)
+      const dayKey = `${date.getMonth() + 1}/${date.getDate()}`
+      if (!dayMap.has(dayKey)) {
+        dayMap.set(dayKey, [])
+      }
+      dayMap.get(dayKey).push(d)
+    })
+    
+    filteredData = Array.from(dayMap.entries()).map(([day, records]) => ({
+      collected_at: records[0].collected_at,
+      balance: records.reduce((sum, r) => sum + r.balance, 0) / records.length,
+      isAggregated: true
+    })).sort((a, b) => new Date(a.collected_at) - new Date(b.collected_at))
+  } else {
+    // 30天模式：每天一个数据点
+    const cutoffTime = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000)
+    const monthData = historyData.value.filter(d => new Date(d.collected_at) >= cutoffTime)
+    
+    const dayMap = new Map()
+    monthData.forEach(d => {
+      const date = new Date(d.collected_at)
+      const dayKey = `${date.getMonth() + 1}/${date.getDate()}`
+      if (!dayMap.has(dayKey)) {
+        dayMap.set(dayKey, [])
+      }
+      dayMap.get(dayKey).push(d)
+    })
+    
+    filteredData = Array.from(dayMap.entries()).map(([day, records]) => ({
+      collected_at: records[0].collected_at,
+      balance: records.reduce((sum, r) => sum + r.balance, 0) / records.length,
+      isAggregated: true
+    })).sort((a, b) => new Date(a.collected_at) - new Date(b.collected_at))
+  }
+  
+  // 格式化日期标签（使用北京时间）
+  const formatLabel = (dateStr) => {
+    const bjDate = toBeijingTime(dateStr)
+    if (chartTimeRange.value === '24h') {
+      // 24小时模式：显示 时:00（表示该小时的整点）
+      return `${String(bjDate.getHours()).padStart(2, '0')}:00`
+    } else {
+      // 其他模式：只显示 月/日
+      return `${bjDate.getMonth() + 1}/${bjDate.getDate()}`
+    }
+  }
+  
+  const dates = filteredData.map(d => formatLabel(d.collected_at))
+  const balances = filteredData.map(d => d.balance)
+
+  // 动态计算 x 轴标签旋转角度
+  const labelRotate = chartTimeRange.value === '24h' ? 45 : 0
+  const labelInterval = chartTimeRange.value === '24h' ? 'auto' : 0
 
   return {
     tooltip: {
       trigger: 'axis',
-      formatter: '{b}<br/>余额: ¥{c}'
+      formatter: (params) => {
+        const dataIndex = params[0].dataIndex
+        const item = filteredData[dataIndex]
+        const bjDate = toBeijingTime(item.collected_at)
+        const timeStr = `${bjDate.getMonth() + 1}月${bjDate.getDate()}日 ${String(bjDate.getHours()).padStart(2, '0')}:${String(bjDate.getMinutes()).padStart(2, '0')}`
+        return `${timeStr}<br/>余额: ¥${params[0].value.toFixed(2)}`
+      }
     },
     grid: {
       left: '3%',
       right: '4%',
-      bottom: '3%',
+      bottom: '10%',
       top: '10%',
       containLabel: true
     },
@@ -321,7 +416,12 @@ const balanceChartOption = computed(() => {
       boundaryGap: false,
       data: dates,
       axisLine: { lineStyle: { color: '#cbd5e0' } },
-      axisLabel: { color: '#718096', fontSize: 12 }
+      axisLabel: { 
+        color: '#718096', 
+        fontSize: 11,
+        rotate: labelRotate,
+        interval: labelInterval
+      }
     },
     yAxis: {
       type: 'value',
@@ -333,12 +433,13 @@ const balanceChartOption = computed(() => {
         formatter: '¥{value}'
       }
     },
+
     series: [{
       name: '余额',
       type: 'line',
       smooth: true,
       symbol: 'circle',
-      symbolSize: 8,
+      symbolSize: chartTimeRange.value === '24h' ? 6 : 8,
       data: balances,
       lineStyle: {
         color: '#667eea',
@@ -469,6 +570,18 @@ const loadData = async () => {
   }
 }
 
+const onTimeRangeChange = (value) => {
+  // 根据选择的时间范围调整加载的天数
+  if (value === '24h') {
+    chartDays.value = 2  // 加载2天数据确保覆盖24小时
+  } else if (value === '7d') {
+    chartDays.value = 7
+  } else {
+    chartDays.value = 30
+  }
+  loadHistory()
+}
+
 const loadHistory = async () => {
   try {
     const res = await electricityApi.getHistory(chartDays.value)
@@ -515,15 +628,18 @@ const formatNumber = (num) => {
 
 const formatTime = (time) => {
   if (!time) return '--'
-  // 将时间字符串转换为北京时间 (UTC+8)
+  // 数据库时间是 UTC，直接显示为北京时间 (UTC+8)
   const date = new Date(time)
-  // 使用 toLocaleString 确保显示为本地时间（北京时间）
-  const beijingTime = new Date(date.toLocaleString('en-US', { timeZone: 'Asia/Shanghai' }))
-  return `${beijingTime.getMonth() + 1}月${beijingTime.getDate()}日 ${String(beijingTime.getHours()).padStart(2, '0')}:${String(beijingTime.getMinutes()).padStart(2, '0')}`
+  // 加8小时转为北京时间
+  const beijingDate = new Date(date.getTime() + 8 * 60 * 60 * 1000)
+  return `${beijingDate.getMonth() + 1}月${beijingDate.getDate()}日 ${String(beijingDate.getHours()).padStart(2, '0')}:${String(beijingDate.getMinutes()).padStart(2, '0')}`
 }
 
 onMounted(() => {
   loadData()
+  // 默认加载2天数据以支持24小时视图
+  chartDays.value = 2
+  chartTimeRange.value = '24h'
   loadHistory()
   loadAnalysis()
 })
@@ -963,7 +1079,7 @@ onMounted(() => {
 }
 
 .chart {
-  height: 280px;
+  height: 300px;
 }
 
 /* ===== 用电建议 ===== */

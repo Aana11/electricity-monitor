@@ -73,7 +73,7 @@ async function verifySchoolCredentials(account, password) {
 }
 
 // 采集单个用户数据
-async function collectUserData(user) {
+async function collectUserData(user, source = 'cron') {
   const instance = createInstance();
   let cookies = '';
   
@@ -126,15 +126,16 @@ async function collectUserData(user) {
         
         await db.run(
           `INSERT INTO electricity_records 
-           (user_id, device_no, balance, price, remaining_kwh, meter_reading_time, collected_at)
-           VALUES (?, ?, ?, ?, ?, ?, datetime('now'))`,
+           (user_id, device_no, balance, price, remaining_kwh, meter_reading_time, collected_at, source)
+           VALUES (?, ?, ?, ?, ?, ?, datetime('now'), ?)`,
           [
             user.id,
             device.DevcieNo,
             device.DeviceBalance,
             device.DevicePrice,
             remainingKwh,
-            device.UpdateTime
+            device.UpdateTime,
+            source
           ]
         );
         
@@ -235,11 +236,12 @@ async function getUserCurrentData(userId) {
   };
 }
 
-// 获取用户历史数据
+// 获取用户历史数据（只返回定时任务的数据，用于趋势图）
 async function getUserHistory(userId, days = 7) {
   const records = await db.all(
     `SELECT * FROM electricity_records 
      WHERE user_id = ? 
+     AND source = 'cron'
      AND collected_at >= datetime('now', '-${days} days')
      ORDER BY collected_at ASC`,
     [userId]

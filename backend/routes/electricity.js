@@ -61,7 +61,7 @@ router.post('/refresh', authMiddleware, async (req, res) => {
       return res.status(404).json({ error: '用户不存在' });
     }
     
-    const result = await electricityService.collectUserData(user);
+    const result = await electricityService.collectUserData(user, 'manual');
     
     if (result.success) {
       const data = await electricityService.getUserCurrentData(req.user.userId);

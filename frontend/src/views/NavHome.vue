@@ -145,6 +145,12 @@
             <span class="tool-icon">📊</span>
             <span class="tool-name">用电分析</span>
           </router-link>
+          
+          <a href="/app.apk" download class="tool-item glass app-download">
+            <span class="tool-icon">📱</span>
+            <span class="tool-name">下载APP</span>
+            <span class="new-badge">NEW</span>
+          </a>
         </div>
       </section>
     </main>
@@ -770,6 +776,7 @@ onUnmounted(() => {
   color: white;
   font-weight: 500;
   transition: all 0.3s ease;
+  position: relative;
 }
 
 .tool-item:hover {
@@ -783,6 +790,54 @@ onUnmounted(() => {
 
 .tool-name {
   font-size: 14px;
+}
+
+/* APP下载按钮特殊样式 */
+.app-download {
+  background: linear-gradient(135deg, rgba(79, 172, 254, 0.3), rgba(0, 242, 254, 0.3));
+  border: 1px solid rgba(79, 172, 254, 0.5);
+  position: relative;
+  overflow: hidden;
+}
+
+.app-download::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.app-download:hover::before {
+  left: 100%;
+}
+
+.app-download:hover {
+  background: linear-gradient(135deg, rgba(79, 172, 254, 0.5), rgba(0, 242, 254, 0.5));
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 25px rgba(79, 172, 254, 0.3);
+}
+
+.new-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  padding: 2px 8px;
+  background: linear-gradient(135deg, #ff6b6b, #ee5a5a);
+  color: white;
+  font-size: 10px;
+  font-weight: 700;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(238,90,90,0.4);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
 }
 
 /* ===== 页脚 ===== */

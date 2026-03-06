@@ -10,3 +10,17 @@
 2026-02-26T14:57:37.806Z [ERROR]: 登录失败: Cannot access 'deviceInfo' before initialization
 2026-02-26T14:57:59.291Z [ERROR]: 登录失败: Cannot access 'deviceInfo' before initialization
 2026-03-02T06:00:00.792Z [ERROR]: 采集用户 1 数据失败:
+2026-03-05T14:00:01.977Z [ERROR]: 采集用户 1 数据失败:
+2026-03-05T14:00:02.977Z [ERROR]: ❌ 定时数据采集失败:
+2026-03-05T16:00:01.248Z [ERROR]: 采集用户 1 数据失败:
+2026-03-05T16:00:02.249Z [ERROR]: ❌ 定时数据采集失败:
+2026-03-05T16:05:00.417Z [ERROR]: ❌ 用电统计计算失败:
+2026-03-05T16:55:14.810Z [ERROR]: 登录失败: SQLITE_READONLY: attempt to write a readonly database
+2026-03-05T16:55:30.628Z [ERROR]: 登录失败: SQLITE_READONLY: attempt to write a readonly database
+2026-03-05T16:55:32.590Z [ERROR]: 登录失败: SQLITE_READONLY: attempt to write a readonly database
+2026-03-05T16:55:34.832Z [ERROR]: 登录失败: SQLITE_READONLY: attempt to write a readonly database
+2026-03-05T16:55:47.398Z [ERROR]: 登录失败: SQLITE_READONLY: attempt to write a readonly database
+2026-03-05T16:55:49.752Z [ERROR]: 登录失败: SQLITE_READONLY: attempt to write a readonly database
+2026-03-05T17:07:09.540Z [ERROR]: 登录失败: SQLITE_READONLY: attempt to write a readonly database
+2026-03-05T17:11:35.196Z [ERROR]: 登录失败: SQLITE_READONLY: attempt to write a readonly database
+2026-03-05T17:12:35.530Z [ERROR]: 登录失败: SQLITE_READONLY: attempt to write a readonly database
